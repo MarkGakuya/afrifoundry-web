@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import { LINKS, STATS } from '../lib/constants';
 
