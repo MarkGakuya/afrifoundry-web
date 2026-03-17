@@ -71,8 +71,8 @@ export default function DataMapClient() {
       delete L.Icon.Default.prototype._getIconUrl;
 
       const map = L.map(mapRef.current, {
-        center: [-0.5, 37.5],   // Kenya centred
-        zoom: 6,
+        center: [-1.8, 37.8],   // Kenya centred — shows Nairobi + Mombasa
+        zoom: 5.5,
         zoomControl: true,
         scrollWheelZoom: false,
         attributionControl: false,
