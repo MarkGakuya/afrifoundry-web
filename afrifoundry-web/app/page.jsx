@@ -111,22 +111,22 @@ export default function HomePage() {
               background: 'linear-gradient(135deg, #fff 0%, rgba(249,115,22,0.9) 55%, #F59E0B 100%)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             }}>
-              98% of the world's AI<br />was built without Africa.
+              Africa's data was<br />never built.
             </span>
           </h1>
 
           <p className="animate-float-delay-2" style={{
             fontSize: 'clamp(1.05rem, 2.2vw, 1.2rem)', color: 'var(--text2)',
-            maxWidth: 600, margin: '0 auto 0.75rem', lineHeight: 1.75,
+            maxWidth: 620, margin: '0 auto 0.75rem', lineHeight: 1.75,
           }}>
-            Every entrepreneur on this continent has been building on borrowed assumptions —
-            wrong prices, wrong market data, wrong context.
+            The internet is 98% non-African. Every major AI was trained on that data —
+            which means 98% of African reality was never captured, never verified, never built.
           </p>
           <p className="animate-float-delay-3" style={{
             fontSize: 'clamp(1.05rem, 2.2vw, 1.2rem)', color: '#fff',
             maxWidth: 560, margin: '0 auto 1.75rem', lineHeight: 1.75, fontWeight: 600,
           }}>
-            AfriFoundry is building the other 2%.
+            AfriFoundry is building the 98% that was left out.
           </p>
 
           {/* Languages pill */}
