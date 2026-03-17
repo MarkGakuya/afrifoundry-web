@@ -53,7 +53,7 @@ export default function DataPage() {
             <span style={{ color: 'var(--gold)' }}>Finally built.</span>
           </h1>
           <p style={{ color: 'var(--text2)', fontSize: 'clamp(1rem,2vw,1.15rem)', lineHeight: 1.75, maxWidth: 600, marginBottom: '0.75rem' }}>
-            Every major AI in the world was trained on internet data. The internet is approximately 98% non-African. AfriFoundry is collecting what was left out — ground-truth data verified by humans who were actually there.
+            Every major AI in the world was trained on internet data. The internet is approximately 98% non-African. The internet is 98% non-African. That means 98% of African prices, behaviour, context, and reality was never in the training data for any AI. AfriFoundry is building what was left out — verified by humans who were actually there.
           </p>
           <p style={{ color: 'var(--text3)', fontFamily: 'var(--font-jetbrains)', fontSize: '0.75rem', letterSpacing: '0.06em', marginBottom: '2rem' }}>
             {STATS.datapoints} verified · on the road to {STATS.datapointsTarget}
@@ -113,12 +113,12 @@ export default function DataPage() {
             <div style={{ background: 'var(--surface)', border: '1px solid rgba(249,115,22,0.2)', borderRadius: 14, padding: '2rem' }}>
               <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '3rem', fontWeight: 600, color: 'var(--orange)', lineHeight: 1, marginBottom: '0.5rem' }}>98%</div>
               <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.75rem' }}>What global AI ignored</h3>
-              <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.7 }}>Non-African internet data. Western prices. European consumer behaviour. American market assumptions. None of which survives contact with a Kenyan market.</p>
+              <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.7 }}>The internet is 98% non-African. Every AI — Claude, GPT, Gemini — was trained on that data. Which means African prices, markets, languages, and context were almost entirely absent from every intelligent system on the planet.</p>
             </div>
             <div style={{ background: 'var(--surface)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: 14, padding: '2rem' }}>
               <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '3rem', fontWeight: 600, color: 'var(--gold)', lineHeight: 1, marginBottom: '0.5rem' }}>2%</div>
-              <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.75rem' }}>What AfriFoundry is building</h3>
-              <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.7 }}>Ground-truth African data. Real prices from real markets. Collected by humans who walked Gikomba and Kongowea. Verified, structured, and permanently owned by AfriFoundry.</p>
+              <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.75rem' }}>What AfriFoundry is building — the 98%</h3>
+              <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.7 }}>The 98% of African data that global AI never had. Real prices, real markets, real context — collected at ground level by people who were actually there. Verified, structured, permanently owned by AfriFoundry.</p>
             </div>
             <div style={{ background: 'var(--surface)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 14, padding: '2rem' }}>
               <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '3rem', fontWeight: 600, color: 'var(--green)', lineHeight: 1, marginBottom: '0.5rem' }}>∞</div>
