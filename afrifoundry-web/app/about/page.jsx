@@ -15,11 +15,11 @@ export default function AboutPage() {
         <div style={{ maxWidth: 860, margin: '0 auto', position: 'relative', zIndex: 2 }}>
           <div className="section-label">About AfriFoundry</div>
           <h1 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(2.4rem,5.5vw,4rem)', lineHeight: 1.08, letterSpacing: '-0.03em', marginBottom: '1.25rem' }}>
-            The data and intelligence<br />
-            <span style={{ color: 'var(--orange)' }}>Africa was never given.</span>
+            Building what Africa<br />
+            <span style={{ color: 'var(--orange)' }}>was never given.</span>
           </h1>
           <p style={{ color: 'var(--text2)', fontSize: 'clamp(1rem,2vw,1.1rem)', lineHeight: 1.8, maxWidth: 620 }}>
-            AfriFoundry is building the infrastructure that was skipped — ground-truth African data, collected at the market level, verified by humans who were actually there. The Bloomberg Terminal of Africa, starting with the data nobody else collected.
+            98% of African reality — prices, markets, languages, behaviour — was never in any AI's training data. AfriFoundry is fixing that. We collect it at market level, verify it with humans who were actually there, and build intelligence products on top of it. The data infrastructure Africa was never given — built by Africans, for Africa.
           </p>
         </div>
       </section>
@@ -35,13 +35,13 @@ export default function AboutPage() {
                 <span style={{ color: 'var(--orange)' }}>without Africa.</span>
               </h2>
               <p style={{ color: 'var(--text2)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '1rem' }}>
-                The internet is approximately 98% non-African. African languages, African market prices, African business realities — almost entirely absent from every intelligent system on the planet.
+                The internet is 98% non-African. That means 98% of African prices, languages, markets, and business reality was absent from every AI ever trained. Claude, GPT, Gemini — none of them know what avocados cost in Kiambu or how Kongowea market works.
               </p>
               <p style={{ color: 'var(--text2)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '1rem' }}>
                 When an African entrepreneur asks these systems a real African question, they hallucinate. They guess. They don't know what avocados cost in Kiambu. They don't know Sheng. They don't know how Kongowea market works on a Friday.
               </p>
               <p style={{ color: 'var(--text2)', fontSize: '1rem', lineHeight: 1.8 }}>
-                AfriFoundry is building what was skipped. Ground-truth data. African context baked in. Infrastructure that was never given to us — so we built it ourselves.
+                AfriFoundry is building the 98% that was left out. Ground-truth data collected at market level. African context baked in. Infrastructure that was never given to us — so we built it ourselves.
               </p>
             </div>
 
@@ -217,26 +217,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Origin — small, one section */}
-      <section style={{ padding: '7rem 1.5rem', background: 'var(--bg2)' }}>
+      {/* Origin — one punchy quote block */}
+      <section style={{ padding: '5rem 1.5rem', background: 'var(--bg2)' }}>
         <div style={{ maxWidth: 780, margin: '0 auto' }}>
-          <div className="section-label">Where It Started</div>
-          <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.2rem)', lineHeight: 1.15, marginBottom: '1.5rem' }}>
-            A hospital triage line in Mombasa.
-          </h2>
           <div style={{
             background: 'rgba(249,115,22,0.04)', border: '1px solid rgba(249,115,22,0.15)',
             borderLeft: '3px solid var(--orange)', borderRadius: '0 12px 12px 0',
-            padding: '1.75rem 2rem',
+            padding: '1.5rem 2rem',
+            display: 'flex', flexDirection: 'column', gap: '0.5rem',
           }}>
-            <p style={{ color: 'var(--text2)', fontSize: '1rem', lineHeight: 1.85, marginBottom: '1rem' }}>
-              AfriFoundry's founder had built an AI-powered infection control system — technically sound, investor-ready. Standing in a hospital triage line in Kenya, watching dust, heat, and crumbling infrastructure, he saw clearly that his own solution would fail in Africa within months. Not because the technology was wrong. Because the data it was built on was wrong.
+            <p style={{ color: 'var(--text2)', fontSize: '0.95rem', lineHeight: 1.8, fontStyle: 'italic' }}>
+              "I had built an AI-powered infection control doorway — technically sound, investor-ready. Standing in a hospital triage line in Kenya, I saw clearly it would fail in Africa within months. Not because the technology was wrong. Because the data it was built on was wrong."
             </p>
-            <p style={{ color: 'var(--text2)', fontSize: '1rem', lineHeight: 1.85 }}>
-              That moment became the company: African entrepreneurs fail not from lack of talent — but from building on borrowed data that was never designed for their reality. AfriFoundry is the answer.
-            </p>
-            <p style={{ color: 'var(--orange)', fontFamily: 'var(--font-jetbrains)', fontSize: '0.65rem', letterSpacing: '0.1em', marginTop: '1.25rem' }}>
-              Founded July 8, 2025 · Mombasa, Kenya
+            <p style={{ color: 'var(--orange)', fontFamily: 'var(--font-jetbrains)', fontSize: '0.62rem', letterSpacing: '0.1em' }}>
+              — MARK GAKUYA · Founded July 8, 2025 · Mombasa, Kenya
             </p>
           </div>
         </div>
@@ -250,36 +244,38 @@ export default function AboutPage() {
             Founder
           </h2>
 
-          <div style={{ background: 'var(--surface)', border: '1px solid var(--border2)', borderRadius: 16, padding: '2.5rem', display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '2.5rem', alignItems: 'start', maxWidth: 720 }}>
-            {/* Avatar */}
-            <div style={{
-              width: 72, height: 72, borderRadius: '50%',
-              background: 'linear-gradient(135deg, var(--orange), var(--gold))',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: '1.5rem', color: '#fff',
-              flexShrink: 0, boxShadow: '0 4px 20px rgba(249,115,22,0.25)',
-            }}>
-              MG
+          <div style={{ background: 'var(--surface)', border: '1px solid var(--border2)', borderRadius: 16, padding: '2.5rem', maxWidth: 620 }}>
+            {/* Avatar on top */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginBottom: '1.5rem' }}>
+              <div style={{
+                width: 80, height: 80, borderRadius: '50%', flexShrink: 0,
+                background: 'linear-gradient(135deg, var(--orange), var(--gold))',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: '1.6rem', color: '#fff',
+                boxShadow: '0 4px 24px rgba(249,115,22,0.3)',
+              }}>
+                MG
+              </div>
+              <div>
+                <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: '1.3rem', lineHeight: 1.1, marginBottom: '0.3rem' }}>Mark Mugo Gakuya</div>
+                <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.62rem', color: 'var(--orange)', letterSpacing: '0.1em' }}>
+                  FOUNDER & CEO · AFRIFOUNDRY
+                </div>
+              </div>
             </div>
 
-            <div>
-              <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: '1.2rem', marginBottom: '0.2rem' }}>Mark Mugo Gakuya</div>
-              <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.65rem', color: 'var(--orange)', letterSpacing: '0.1em', marginBottom: '1rem' }}>
-                FOUNDER & CEO · MOMBASA, KENYA
-              </div>
+            {/* Description below */}
+            <p style={{ color: 'var(--text2)', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '0.85rem' }}>
+              Mark built AfriFoundry because the infrastructure didn't exist. A biomedical engineer who started by building AI-powered medical devices — and realised, standing in a Kenyan hospital, that every tool he was using was built on data that had nothing to do with his reality.
+            </p>
+            <p style={{ color: 'var(--text2)', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '1.5rem' }}>
+              He built AfriFoundry from zero in 9 months with no external funding — collecting the first ground-truth African market data himself, walking Gikomba, Kongowea, and Likoni markets stall by stall.
+            </p>
 
-              <p style={{ color: 'var(--text2)', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '1rem' }}>
-                Mark is the founder of AfriFoundry — the data and intelligence infrastructure he built because it didn't exist. A biomedical engineer by training, he identified the fundamental problem facing African entrepreneurs: every tool they use to validate ideas is built on data that has nothing to do with their reality.
-              </p>
-              <p style={{ color: 'var(--text2)', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-                He built AfriFoundry from zero in 9 months with no external funding — walking Gikomba, Kongowea, and Likoni markets himself to collect the ground-truth data that powers AfriFoundry AI.
-              </p>
-
-              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                <a href={`mailto:${LINKS.founderEmail}`} style={{ color: 'var(--orange)', fontSize: '0.85rem', textDecoration: 'none', fontFamily: 'var(--font-jetbrains)' }}>{LINKS.founderEmail}</a>
-                <span style={{ color: 'var(--border2)' }}>·</span>
-                <a href={LINKS.founderLinkedin} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text3)', fontSize: '0.85rem', textDecoration: 'none' }}>LinkedIn</a>
-              </div>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', paddingTop: '1.25rem', borderTop: '1px solid var(--border)' }}>
+              <a href={`mailto:${LINKS.founderEmail}`} style={{ color: 'var(--orange)', fontSize: '0.85rem', textDecoration: 'none', fontFamily: 'var(--font-jetbrains)' }}>{LINKS.founderEmail}</a>
+              <span style={{ color: 'var(--border2)' }}>·</span>
+              <a href={LINKS.founderLinkedin} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text3)', fontSize: '0.85rem', textDecoration: 'none' }}>LinkedIn →</a>
             </div>
           </div>
 
