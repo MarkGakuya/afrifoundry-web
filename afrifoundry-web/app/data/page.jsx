@@ -49,8 +49,8 @@ export default function DataPage() {
         <div style={{ maxWidth: 860, margin: '0 auto', position: 'relative', zIndex: 2 }}>
           <div className="section-label" style={{ color: 'var(--gold)' }}>The AfriFoundry Dataset</div>
           <h1 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(2.4rem,5.5vw,4rem)', lineHeight: 1.08, letterSpacing: '-0.03em', marginBottom: '1.25rem' }}>
-            We're building<br />
-            <span style={{ color: 'var(--gold)' }}>the 2% they skipped.</span>
+            Africa's data.<br />
+            <span style={{ color: 'var(--gold)' }}>Finally built.</span>
           </h1>
           <p style={{ color: 'var(--text2)', fontSize: 'clamp(1rem,2vw,1.15rem)', lineHeight: 1.75, maxWidth: 600, marginBottom: '0.75rem' }}>
             Every major AI in the world was trained on internet data. The internet is approximately 98% non-African. AfriFoundry is collecting what was left out — ground-truth data verified by humans who were actually there.
@@ -112,7 +112,7 @@ export default function DataPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '5rem' }}>
             <div style={{ background: 'var(--surface)', border: '1px solid rgba(249,115,22,0.2)', borderRadius: 14, padding: '2rem' }}>
               <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '3rem', fontWeight: 600, color: 'var(--orange)', lineHeight: 1, marginBottom: '0.5rem' }}>98%</div>
-              <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.75rem' }}>What global AI was trained on</h3>
+              <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.75rem' }}>What global AI ignored</h3>
               <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.7 }}>Non-African internet data. Western prices. European consumer behaviour. American market assumptions. None of which survives contact with a Kenyan market.</p>
             </div>
             <div style={{ background: 'var(--surface)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: 14, padding: '2rem' }}>
