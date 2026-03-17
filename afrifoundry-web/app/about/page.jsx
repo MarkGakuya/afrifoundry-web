@@ -143,8 +143,82 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Origin — small, one section */}
+      {/* Mission, Vision, Values */}
       <section style={{ padding: '7rem 1.5rem', background: 'var(--bg)' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
+            {/* Mission */}
+            <div style={{ background: 'var(--surface)', border: '1px solid rgba(249,115,22,0.25)', borderTop: '3px solid var(--orange)', borderRadius: 16, padding: '2rem' }}>
+              <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.58rem', color: 'var(--orange)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Our Mission</div>
+              <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: '1.25rem', lineHeight: 1.2, marginBottom: '1rem' }}>
+                Give every African entrepreneur the intelligence they deserve.
+              </h3>
+              <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.75 }}>
+                To build the data and intelligence infrastructure Africa was never given — so that every founder, farmer, and business owner on this continent can make decisions based on their real world, not someone else's assumptions.
+              </p>
+            </div>
+
+            {/* Vision */}
+            <div style={{ background: 'var(--surface)', border: '1px solid rgba(245,158,11,0.25)', borderTop: '3px solid var(--gold)', borderRadius: 16, padding: '2rem' }}>
+              <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.58rem', color: 'var(--gold)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Our Vision</div>
+              <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: '1.25rem', lineHeight: 1.2, marginBottom: '1rem' }}>
+                The Bloomberg Terminal of Africa.
+              </h3>
+              <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.75 }}>
+                A world where African intelligence powers African decisions — and where the data infrastructure built here becomes the continental standard for every AI that wants to truly understand and serve Africa.
+              </p>
+            </div>
+          </div>
+
+          {/* Core Values */}
+          <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 16, padding: '2rem' }}>
+            <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.58rem', color: 'var(--green)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Core Values</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
+              {[
+                {
+                  icon: '🌍',
+                  title: 'Context Over Convention',
+                  desc: 'Every decision is grounded in African reality. We never assume what works elsewhere works here.',
+                },
+                {
+                  icon: '🔎',
+                  title: 'Ground Truth Only',
+                  desc: 'We collect data where it lives — in the markets, on the ground, verified by people who were actually there.',
+                },
+                {
+                  icon: '🏗️',
+                  title: 'Infrastructure Thinking',
+                  desc: 'We build for the long term. The moat we are building compounds with every datapoint collected.',
+                },
+                {
+                  icon: '🤝',
+                  title: 'Radical Honesty',
+                  desc: 'AfriFoundry AI tells you the truth about your idea — not what you want to hear. We hold ourselves to the same standard.',
+                },
+                {
+                  icon: '⚡',
+                  title: 'Speed With Rigour',
+                  desc: 'We move fast but never at the cost of data quality. A wrong datapoint is worse than no datapoint.',
+                },
+                {
+                  icon: '🌱',
+                  title: 'Built by Africans',
+                  desc: 'We are not building about Africa from the outside. We are building from inside it — with full context, full accountability.',
+                },
+              ].map(v => (
+                <div key={v.title}>
+                  <div style={{ fontSize: '1.5rem', marginBottom: '0.6rem' }}>{v.icon}</div>
+                  <h4 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '0.9rem', color: 'var(--green)', marginBottom: '0.4rem' }}>{v.title}</h4>
+                  <p style={{ color: 'var(--text2)', fontSize: '0.82rem', lineHeight: 1.65 }}>{v.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Origin — small, one section */}
+      <section style={{ padding: '7rem 1.5rem', background: 'var(--bg2)' }}>
         <div style={{ maxWidth: 780, margin: '0 auto' }}>
           <div className="section-label">Where It Started</div>
           <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.2rem)', lineHeight: 1.15, marginBottom: '1.5rem' }}>
