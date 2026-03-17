@@ -84,8 +84,8 @@ export default function AboutPage() {
                 ))}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                <a href={`mailto:${LINKS.email}`} style={{ color: 'var(--orange)', fontSize: '0.85rem', textDecoration: 'none' }}>{LINKS.email}</a>
-                <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text3)', fontSize: '0.85rem', textDecoration: 'none' }}>LinkedIn · 2,512 followers</a>
+                <a href={`mailto:${LINKS.founderEmail}`} style={{ color: 'var(--orange)', fontSize: '0.85rem', textDecoration: 'none' }}>{LINKS.founderEmail}</a>
+                <a href={LINKS.founderLinkedin} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text3)', fontSize: '0.85rem', textDecoration: 'none' }}>LinkedIn · 2,512 followers</a>
               </div>
             </div>
 
