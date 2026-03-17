@@ -268,22 +268,11 @@ export default function AboutPage() {
                 FOUNDER & CEO · MOMBASA, KENYA
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1.25rem' }}>
-                {[
-                  { label: 'Education', value: 'Biomedical Engineering' },
-                  { label: 'Location', value: 'Mombasa, Kenya' },
-                  { label: 'Founded', value: STATS.founded },
-                  { label: 'Stage', value: 'Pre-seed · Bootstrapped' },
-                ].map(item => (
-                  <div key={item.label}>
-                    <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.58rem', color: 'var(--text3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.15rem' }}>{item.label}</div>
-                    <div style={{ fontSize: '0.875rem', color: 'var(--text2)', fontWeight: 500 }}>{item.value}</div>
-                  </div>
-                ))}
-              </div>
-
-              <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.75, marginBottom: '1.25rem' }}>
-                Solo founder. Built AfriFoundry from zero in 9 months with no external funding. Has personally walked Gikomba, Kongowea, and Likoni markets collecting the data that powers AfriFoundry AI.
+              <p style={{ color: 'var(--text2)', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '1rem' }}>
+                Mark is the founder of AfriFoundry — the data and intelligence infrastructure he built because it didn't exist. A biomedical engineer by training, he identified the fundamental problem facing African entrepreneurs: every tool they use to validate ideas is built on data that has nothing to do with their reality.
+              </p>
+              <p style={{ color: 'var(--text2)', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '1.25rem' }}>
+                He built AfriFoundry from zero in 9 months with no external funding — walking Gikomba, Kongowea, and Likoni markets himself to collect the ground-truth data that powers AfriFoundry AI.
               </p>
 
               <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
