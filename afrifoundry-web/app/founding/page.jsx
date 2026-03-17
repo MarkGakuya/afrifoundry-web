@@ -147,14 +147,14 @@ export default function FoundingPage() {
                 <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.55rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--gold)', textAlign: 'center', marginBottom: '1.25rem', opacity: 0.85 }}>
                   ◆ FOUNDING PIONEERS · #001 – #010 ◆
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))', gap: '0.75rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '0.75rem' }}>
                   {PIONEER_TIER.map(m => (
                     <div key={m.num} style={{
                       background: m.name === 'Mark Gakuya'
                         ? 'linear-gradient(135deg, rgba(249,115,22,0.15), rgba(245,158,11,0.08))'
                         : 'linear-gradient(135deg, rgba(245,158,11,0.07), rgba(249,115,22,0.04))',
                       border: m.name === 'Mark Gakuya' ? '1px solid rgba(249,115,22,0.4)' : '1px solid rgba(245,158,11,0.2)',
-                      borderRadius: 12, padding: '1rem 1.1rem',
+                      borderRadius: 10, padding: '0.75rem 0.9rem',
                       boxShadow: m.name === 'Mark Gakuya' ? '0 0 20px rgba(249,115,22,0.1)' : '0 0 10px rgba(245,158,11,0.05)',
                     }}>
                       <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.52rem', color: 'var(--gold)', opacity: 0.7, letterSpacing: '0.1em', marginBottom: '0.35rem' }}>{m.num}</div>
@@ -173,16 +173,16 @@ export default function FoundingPage() {
               </div>
 
               {/* Main Wall — #011 onwards */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '0.6rem', marginBottom: '1.5rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '0.5rem', marginBottom: '1.5rem' }}>
                 {MAIN_WALL.map(m => (
                   <div key={m.num} style={{
                     background: 'rgba(255,255,255,0.025)',
                     border: '1px solid rgba(255,255,255,0.07)',
-                    borderRadius: 10, padding: '0.85rem 1rem',
+                    borderRadius: 8, padding: '0.6rem 0.75rem',
                     transition: 'border-color 0.2s, background 0.2s',
                   }}>
                     <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.5rem', color: 'var(--text3)', opacity: 0.5, letterSpacing: '0.1em', marginBottom: '0.3rem' }}>{m.num}</div>
-                    <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 600, fontSize: '0.82rem', color: 'var(--text2)', lineHeight: 1.35 }}>{m.name}</div>
+                    <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 600, fontSize: '0.78rem', color: 'var(--text2)', lineHeight: 1.3 }}>{m.name}</div>
                     <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.5rem', color: 'var(--text3)', letterSpacing: '0.08em', marginTop: '0.25rem', opacity: 0.55 }}>{m.city}</div>
                   </div>
                 ))}
@@ -192,7 +192,7 @@ export default function FoundingPage() {
                   <div key={r.num} style={{
                     background: 'transparent',
                     border: '1px dashed rgba(255,255,255,0.08)',
-                    borderRadius: 10, padding: '0.85rem 1rem',
+                    borderRadius: 8, padding: '0.6rem 0.75rem',
                   }}>
                     <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.5rem', color: 'rgba(255,255,255,0.15)', letterSpacing: '0.1em', marginBottom: '0.3rem' }}>{r.num}</div>
                     <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 600, fontSize: '0.82rem', color: 'rgba(255,255,255,0.12)', lineHeight: 1.35 }}>Your name here</div>
