@@ -70,23 +70,58 @@ export default function FoundingPage() {
         </div>
       </section>
 
-      {/* ── BENEFITS ──────────────────────────────────────────────────────────── */}
-      <section style={{ padding: '3rem 1.5rem', background: 'var(--bg2)', borderTop: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: '0.65rem', justifyContent: 'center' }}>
-          {[
-            '🏛️ Permanent name on the Founding Wall',
-            '💎 Best pricing AfriFoundry will ever offer',
-            '⚡ Early access to every new feature',
-            '📞 Direct line to the founder',
-            '🌍 Part of African AI history',
-          ].map(b => (
-            <div key={b} style={{
-              display: 'flex', alignItems: 'center', gap: '0.5rem',
-              padding: '0.55rem 1.1rem', background: 'var(--surface)',
-              border: '1px solid var(--border)', borderRadius: 100,
-              fontSize: '0.85rem', color: 'var(--text2)',
-            }}>{b}</div>
-          ))}
+      {/* ── WHAT YOU GET ──────────────────────────────────────────────────────── */}
+      <section style={{ padding: '4rem 1.5rem', background: 'var(--bg2)', borderTop: '1px solid var(--border)' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <div className="section-label" style={{ justifyContent: 'center' }}>What Founding Members Get</div>
+            <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.2rem)', lineHeight: 1.15 }}>
+              The best deal AfriFoundry<br />will ever offer. Permanently.
+            </h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
+            {[
+              {
+                icon: '🏛️', title: 'Permanent Wall Engraving',
+                desc: 'Your name is on the Founding Wall forever. When AfriFoundry becomes the Bloomberg Terminal of Africa, you were there first.',
+                color: 'var(--orange)',
+              },
+              {
+                icon: '💎', title: 'Founder Pricing — Locked',
+                desc: 'You get the best price AfriFoundry will ever offer, locked in permanently. Every future customer pays more than you.',
+                color: 'var(--gold)',
+              },
+              {
+                icon: '⚡', title: 'First Access to Everything',
+                desc: 'Every new feature, every new product, every new dataset — founding members get access before anyone else.',
+                color: 'var(--green)',
+              },
+              {
+                icon: '📞', title: 'Direct Line to the Founder',
+                desc: 'You have direct access to Mark. Not a support ticket. Not a chatbot. The founder himself, for questions, feedback, and ideas.',
+                color: 'var(--orange)',
+              },
+              {
+                icon: '🌍', title: 'Part of African AI History',
+                desc: 'AfriFoundry is building the data infrastructure that was never built for Africa. You helped make it possible from day one.',
+                color: 'var(--gold)',
+              },
+              {
+                icon: '📊', title: 'Early API Access',
+                desc: 'When AfriFoundry opens its API to developers in V2, founding members get first access and preferential rate limits.',
+                color: 'var(--green)',
+              },
+            ].map(b => (
+              <div key={b.title} style={{
+                background: 'var(--surface)', border: '1px solid var(--border)',
+                borderTop: `2px solid ${b.color}`, borderRadius: 12, padding: '1.5rem',
+              }}>
+                <div style={{ fontSize: '1.5rem', marginBottom: '0.6rem' }}>{b.icon}</div>
+                <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '0.9rem', color: b.color, marginBottom: '0.5rem' }}>{b.title}</h3>
+                <p style={{ color: 'var(--text2)', fontSize: '0.82rem', lineHeight: 1.65 }}>{b.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -102,7 +137,7 @@ export default function FoundingPage() {
           }}>
             <div style={{
               background: 'linear-gradient(170deg, #0d1726 0%, #080c18 50%, #0b1220 100%)',
-              borderRadius: 22, padding: '3rem 2.5rem',
+              borderRadius: 22, padding: '2rem 1.25rem',
               position: 'relative', overflow: 'hidden',
             }}>
               {/* Subtle texture */}
@@ -147,14 +182,14 @@ export default function FoundingPage() {
                 <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.55rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--gold)', textAlign: 'center', marginBottom: '1.25rem', opacity: 0.85 }}>
                   ◆ FOUNDING PIONEERS · #001 – #010 ◆
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '0.75rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.6rem' }}>
                   {PIONEER_TIER.map(m => (
                     <div key={m.num} style={{
                       background: m.name === 'Mark Gakuya'
                         ? 'linear-gradient(135deg, rgba(249,115,22,0.15), rgba(245,158,11,0.08))'
                         : 'linear-gradient(135deg, rgba(245,158,11,0.07), rgba(249,115,22,0.04))',
                       border: m.name === 'Mark Gakuya' ? '1px solid rgba(249,115,22,0.4)' : '1px solid rgba(245,158,11,0.2)',
-                      borderRadius: 10, padding: '0.75rem 0.9rem',
+                      borderRadius: 10, padding: '0.7rem 0.8rem',
                       boxShadow: m.name === 'Mark Gakuya' ? '0 0 20px rgba(249,115,22,0.1)' : '0 0 10px rgba(245,158,11,0.05)',
                     }}>
                       <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.52rem', color: 'var(--gold)', opacity: 0.7, letterSpacing: '0.1em', marginBottom: '0.35rem' }}>{m.num}</div>
@@ -173,7 +208,7 @@ export default function FoundingPage() {
               </div>
 
               {/* Main Wall — #011 onwards */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '0.5rem', marginBottom: '1.5rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.5rem', marginBottom: '1.5rem' }}>
                 {MAIN_WALL.map(m => (
                   <div key={m.num} style={{
                     background: 'rgba(255,255,255,0.025)',
