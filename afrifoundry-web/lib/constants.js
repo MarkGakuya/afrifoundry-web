@@ -16,10 +16,17 @@ export const LINKS = {
   foundingForm: 'https://tally.so/r/GxzR4k',
   contactForm: 'https://tally.so/r/contactAfriFoundry',
   newsletter: 'https://www.linkedin.com/newsletters/the-validation-point-7401988315769634816',
-  linkedin: 'https://www.linkedin.com/in/markgakuya',
+  linkedin: 'https://www.linkedin.com/company/afrifoundry',
+  founderLinkedin: 'https://www.linkedin.com/in/markgakuya',
   twitter: 'https://twitter.com/AfriFoundry',
   whatsapp: 'https://whatsapp.com/channel/0029VbB1Yu07T8beQCLSJZ0I',
-  email: 'mark@afrifoundry.com',
+  // Official company emails
+  emailHello: 'hello@afrifoundry.com',
+  emailAdmin: 'admin@afrifoundry.com',
+  emailAI: 'ai@afrifoundry.com',
+  emailSupport: 'support@afrifoundry.com',
+  // Founder personal contact (used on About page only)
+  founderEmail: 'mark@afrifoundry.com',
   phone: '+254 708 895 622',
 };
 
