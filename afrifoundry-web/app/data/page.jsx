@@ -1,9 +1,13 @@
+import dynamic from 'next/dynamic';
 import { STATS, LINKS } from '../../lib/constants';
 
 export const metadata = {
-  title: 'The AfriFoundry Dataset — 500,000+ Verified African Market Datapoints',
-  description: 'Ground-truth African data collected at market level in Gikomba, Kongowea, Wakulima and 30+ markets. Building the 98% that global AI left out.',
+  title: 'The AfriFoundry Dataset — Ground-Truth African Market Data',
+  description: 'Ground-truth African data collected at market level in Gikomba, Kongowea, Wakulima and 30+ markets. 500,000+ verified datapoints on the road to 1 million.',
 };
+
+// Load map client-side only — Leaflet requires browser APIs
+const DataMapClient = dynamic(() => import('./DataMapClient'), { ssr: false });
 
 const SECTORS = [
   'Food & Agriculture', 'Healthcare', 'Construction & Real Estate', 'Transport & Logistics',
@@ -27,10 +31,18 @@ const MARKETS = [
   { name: 'Limuru Road', city: 'Kiambu', type: 'Farm gate prices' },
 ];
 
+const PIPELINE = [
+  { step: '01', label: 'Collected', desc: 'Scout walks the market, records price, location, and timestamp', color: 'var(--orange)' },
+  { step: '02', label: 'Normalised', desc: 'Cleaned and standardised into the three-table schema', color: 'var(--gold)' },
+  { step: '03', label: 'Validated', desc: 'Confidence-scored — below 0.65 goes to manual review queue', color: '#8B5CF6' },
+  { step: '04', label: 'Deduplicated', desc: 'Cross-checked against existing datapoints by location and product', color: 'var(--green)' },
+  { step: '05', label: 'Stored', desc: 'Tagged across three axes: Geography × Industry × Intelligence Layer', color: 'var(--green)' },
+];
+
 export default function DataPage() {
   return (
     <>
-      {/* Hero */}
+      {/* ── HERO ──────────────────────────────────────────────────────────────── */}
       <section style={{ minHeight: '65vh', display: 'flex', alignItems: 'center', padding: '9rem 1.5rem 5rem', position: 'relative', overflow: 'hidden', background: 'var(--bg)' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(245,158,11,0.08) 0%, transparent 65%)' }} />
         <div className="grid-bg" style={{ position: 'absolute', inset: 0, opacity: 0.4 }} />
@@ -40,10 +52,13 @@ export default function DataPage() {
             We're building<br />
             <span style={{ color: 'var(--gold)' }}>the 2% they skipped.</span>
           </h1>
-          <p style={{ color: 'var(--text2)', fontSize: 'clamp(1rem,2vw,1.15rem)', lineHeight: 1.75, maxWidth: 600, marginBottom: '1.5rem' }}>
+          <p style={{ color: 'var(--text2)', fontSize: 'clamp(1rem,2vw,1.15rem)', lineHeight: 1.75, maxWidth: 600, marginBottom: '0.75rem' }}>
             Every major AI in the world was trained on internet data. The internet is approximately 98% non-African. AfriFoundry is collecting what was left out — ground-truth data verified by humans who were actually there.
           </p>
-          <div style={{ display: 'flex', gap: '2.5rem', flexWrap: 'wrap', marginTop: '2rem' }}>
+          <p style={{ color: 'var(--text3)', fontFamily: 'var(--font-jetbrains)', fontSize: '0.75rem', letterSpacing: '0.06em', marginBottom: '2rem' }}>
+            {STATS.datapoints} verified · on the road to {STATS.datapointsTarget}
+          </p>
+          <div style={{ display: 'flex', gap: '2.5rem', flexWrap: 'wrap' }}>
             {[
               { n: STATS.datapoints, l: 'Verified datapoints', sub: STATS.datapointsSub },
               { n: '30+', l: 'Markets sampled' },
@@ -60,10 +75,41 @@ export default function DataPage() {
         </div>
       </section>
 
-      {/* The 98% */}
-      <section style={{ padding: '5rem 1.5rem', background: 'var(--bg2)' }}>
+      {/* ── LIVE MAP ──────────────────────────────────────────────────────────── */}
+      <section style={{ padding: '7rem 1.5rem', background: 'var(--bg2)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '4rem' }}>
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '2.5rem' }}>
+            <div>
+              <div className="section-label">Live Data Coverage</div>
+              <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.4rem)', lineHeight: 1.15, marginBottom: '0.5rem' }}>
+                Where the data lives
+              </h2>
+              <p style={{ color: 'var(--text2)', fontSize: '0.95rem', lineHeight: 1.75, maxWidth: 520 }}>
+                Every bubble is a real location. Size and intensity reflect datapoint density — where we've collected the most, and where we're still building. Kenya is the primary market. East Africa is next.
+              </p>
+            </div>
+            <div style={{
+              background: 'var(--surface)', border: '1px solid rgba(249,115,22,0.2)',
+              borderRadius: 12, padding: '1rem 1.25rem', flexShrink: 0,
+            }}>
+              <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.58rem', color: 'var(--text3)', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>TOTAL MAPPED</div>
+              <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '1.8rem', fontWeight: 700, color: 'var(--orange)', lineHeight: 1 }}>{STATS.datapoints}</div>
+              <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.62rem', color: 'var(--text3)', marginTop: '0.3rem' }}>{STATS.datapointsSub}</div>
+            </div>
+          </div>
+
+          <DataMapClient />
+
+          <p style={{ color: 'var(--text3)', fontFamily: 'var(--font-jetbrains)', fontSize: '0.65rem', letterSpacing: '0.05em', marginTop: '1rem', textAlign: 'center' }}>
+            Hover any bubble to see location details · Scroll to zoom · Data updated as scouts submit
+          </p>
+        </div>
+      </section>
+
+      {/* ── THE 98% ───────────────────────────────────────────────────────────── */}
+      <section style={{ padding: '7rem 1.5rem', background: 'var(--bg)' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '5rem' }}>
             <div style={{ background: 'var(--surface)', border: '1px solid rgba(249,115,22,0.2)', borderRadius: 14, padding: '2rem' }}>
               <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '3rem', fontWeight: 600, color: 'var(--orange)', lineHeight: 1, marginBottom: '0.5rem' }}>98%</div>
               <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.75rem' }}>What global AI was trained on</h3>
@@ -72,20 +118,46 @@ export default function DataPage() {
             <div style={{ background: 'var(--surface)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: 14, padding: '2rem' }}>
               <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '3rem', fontWeight: 600, color: 'var(--gold)', lineHeight: 1, marginBottom: '0.5rem' }}>2%</div>
               <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.75rem' }}>What AfriFoundry is building</h3>
-              <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.7 }}>Ground-truth African data. Real prices from real markets. Collected by humans who walked Gikomba and Kongowea. Verified. Structured. Permanently owned by AfriFoundry.</p>
+              <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.7 }}>Ground-truth African data. Real prices from real markets. Collected by humans who walked Gikomba and Kongowea. Verified, structured, and permanently owned by AfriFoundry.</p>
             </div>
             <div style={{ background: 'var(--surface)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 14, padding: '2rem' }}>
               <div style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '3rem', fontWeight: 600, color: 'var(--green)', lineHeight: 1, marginBottom: '0.5rem' }}>∞</div>
               <h3 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.75rem' }}>Why this is a moat</h3>
-              <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.7 }}>No competitor can train on data that doesn't exist. We have a 9-month head start on building a dataset that will power every AI that wants to serve Africa — including ours.</p>
+              <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.7 }}>No competitor can train on data that doesn't exist. We have a 9-month head start building a dataset that will power every AI that wants to serve Africa — including ours.</p>
             </div>
           </div>
 
-          {/* What we collect */}
+          {/* Pipeline */}
+          <div className="section-label">How Every Datapoint Is Processed</div>
+          <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.4rem)', lineHeight: 1.15, marginBottom: '0.75rem' }}>Nothing junk enters the database.</h2>
+          <p style={{ color: 'var(--text2)', fontSize: '1rem', lineHeight: 1.75, maxWidth: 600, marginBottom: '2.5rem' }}>
+            Every datapoint passes through a 5-stage pipeline. Every point has a location, timestamp, source, and confidence score. Nothing estimated. Nothing scraped from Wikipedia.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+            {PIPELINE.map((p, i) => (
+              <div key={p.step} style={{
+                display: 'flex', gap: '1.5rem', alignItems: 'flex-start',
+                padding: '1.25rem 0',
+                borderBottom: i < PIPELINE.length - 1 ? '1px solid var(--border)' : 'none',
+              }}>
+                <span style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.65rem', color: p.color, letterSpacing: '0.1em', flexShrink: 0, marginTop: '0.15rem', minWidth: 24 }}>{p.step}</span>
+                <div>
+                  <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '0.95rem', color: p.color, marginBottom: '0.2rem' }}>{p.label}</div>
+                  <div style={{ color: 'var(--text2)', fontSize: '0.875rem', lineHeight: 1.6 }}>{p.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT WE COLLECT ───────────────────────────────────────────────────── */}
+      <section style={{ padding: '7rem 1.5rem', background: 'var(--bg2)' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="section-label">What We Collect</div>
-          <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.4rem)', lineHeight: 1.15, marginBottom: '1rem' }}>Real data. Real places. Real people.</h2>
+          <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.4rem)', lineHeight: 1.15, marginBottom: '0.75rem' }}>Real data. Real places. Real people.</h2>
           <p style={{ color: 'var(--text2)', fontSize: '1rem', lineHeight: 1.75, maxWidth: 640, marginBottom: '2.5rem' }}>
-            Every datapoint in the AfriFoundry dataset has a location, a timestamp, a source, and a confidence score. Nothing is estimated. Nothing is scraped from Wikipedia. Everything is verified.
+            12 data types across {STATS.sectors} sectors. Every category has a scraper, a field collection protocol, or both.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.85rem' }}>
             {[
@@ -110,13 +182,13 @@ export default function DataPage() {
         </div>
       </section>
 
-      {/* Markets */}
-      <section style={{ padding: '5rem 1.5rem', background: 'var(--bg)' }}>
+      {/* ── MARKETS ───────────────────────────────────────────────────────────── */}
+      <section style={{ padding: '7rem 1.5rem', background: 'var(--bg)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="section-label">Where We Collect</div>
           <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.4rem)', lineHeight: 1.15, marginBottom: '0.75rem' }}>Markets we've walked</h2>
           <p style={{ color: 'var(--text2)', fontSize: '1rem', lineHeight: 1.7, maxWidth: 580, marginBottom: '2.5rem' }}>
-            Our scouts and founder have personally visited every market below. The data isn't estimated — it was collected on the ground, by people who were there.
+            Our scouts and founder have personally visited every market below. The data wasn't estimated — it was collected on the ground, by people who were there.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '0.85rem' }}>
             {MARKETS.map(m => (
@@ -130,8 +202,8 @@ export default function DataPage() {
         </div>
       </section>
 
-      {/* Sectors */}
-      <section style={{ padding: '5rem 1.5rem', background: 'var(--bg2)' }}>
+      {/* ── SECTORS ───────────────────────────────────────────────────────────── */}
+      <section style={{ padding: '7rem 1.5rem', background: 'var(--bg2)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="section-label">Sectors Covered</div>
           <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.4rem)', lineHeight: 1.15, marginBottom: '2.5rem' }}>{STATS.sectors} sectors. Growing.</h2>
@@ -143,14 +215,14 @@ export default function DataPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ padding: '5rem 1.5rem', background: 'var(--bg)', textAlign: 'center' }}>
+      {/* ── CTA ───────────────────────────────────────────────────────────────── */}
+      <section style={{ padding: '7rem 1.5rem', background: 'var(--bg)', textAlign: 'center' }}>
         <div style={{ maxWidth: 580, margin: '0 auto' }}>
           <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.8rem,4vw,2.6rem)', lineHeight: 1.15, marginBottom: '1rem' }}>
             See the data in action
           </h2>
           <p style={{ color: 'var(--text2)', lineHeight: 1.75, marginBottom: '2rem' }}>
-            Every conversation with AfriFoundry AI draws from this dataset in real time. Ask about prices in your market. See what {STATS.datapoints} datapoints feels like.
+            Every conversation with AfriFoundry AI draws from this dataset in real time. Ask about prices in your market. See what {STATS.datapoints} verified African datapoints feels like.
           </p>
           <a href={LINKS.ai} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ fontSize: '1.05rem', padding: '0.9rem 2.25rem' }}>
             Talk to AfriFoundry AI →
