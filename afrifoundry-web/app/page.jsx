@@ -144,9 +144,9 @@ export default function HomePage() {
       </div>
 
       {/* ─── THE PROBLEM + VISION ─────────────────────────────────────────────── */}
-      <section style={{ padding: '6rem 1.5rem', background: 'var(--bg2)' }}>
+      <section style={{ padding: '8rem 1.5rem', background: 'var(--bg2)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '5rem', alignItems: 'center' }}>
             <div>
               <div className="section-label">The Problem We Are Solving</div>
               <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.8rem,4vw,2.8rem)', lineHeight: 1.12, letterSpacing: '-0.02em', marginBottom: '1.25rem' }}>
@@ -209,16 +209,16 @@ export default function HomePage() {
       </section>
 
       {/* ─── PRODUCTS ─────────────────────────────────────────────────────────── */}
-      <section style={{ padding: '6rem 1.5rem', background: 'var(--bg)' }}>
+      <section style={{ padding: '8rem 1.5rem', background: 'var(--bg)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
             <div className="section-label" style={{ justifyContent: 'center' }}>What We've Built</div>
             <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.8rem,4vw,2.6rem)', lineHeight: 1.15, letterSpacing: '-0.02em' }}>
               Infrastructure, not just a product
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.75rem' }}>
             {/* AfriFoundry AI */}
             <div style={{
               background: 'var(--surface)', border: '1px solid var(--border2)',
@@ -309,14 +309,14 @@ export default function HomePage() {
       </section>
 
       {/* ─── TRACTION NUMBERS ─────────────────────────────────────────────────── */}
-      <section style={{ padding: '5rem 1.5rem', background: 'var(--bg2)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '7rem 1.5rem', background: 'var(--bg2)', position: 'relative', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', inset: 0,
           background: 'radial-gradient(ellipse 50% 60% at 50% 50%, rgba(249,115,22,0.05) 0%, transparent 70%)',
           pointerEvents: 'none',
         }} />
         <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <div className="section-label" style={{ justifyContent: 'center' }}>Traction</div>
             <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.4rem)', lineHeight: 1.2 }}>
               9 months. Zero funding. Real numbers.
@@ -346,7 +346,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── FOUNDING 100 URGENT ──────────────────────────────────────────────── */}
-      <section style={{ padding: '6rem 1.5rem', background: 'var(--bg)' }}>
+      <section style={{ padding: '8rem 1.5rem', background: 'var(--bg)' }}>
         <div style={{ maxWidth: 780, margin: '0 auto', textAlign: 'center' }}>
           {/* Urgent pill */}
           <div style={{
@@ -391,8 +391,8 @@ export default function HomePage() {
       </section>
 
       {/* ─── NEWSLETTER ───────────────────────────────────────────────────────── */}
-      <section style={{ padding: '6rem 1.5rem', background: 'var(--bg2)' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+      <section style={{ padding: '8rem 1.5rem', background: 'var(--bg2)' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '5rem', alignItems: 'center' }}>
           <div>
             <div className="section-label">AfriFoundry's Publication</div>
             <h2 style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 'clamp(1.8rem,4vw,2.4rem)', lineHeight: 1.15, letterSpacing: '-0.02em', marginBottom: '1rem' }}>
