@@ -1,31 +1,4 @@
-# AfriFoundry Website — Next.js
-
-Full rebuild of the marketing site as a real Next.js 14 App Router project —
-real routes instead of JS-toggled views, Tailwind for styling, next/font for
-type, next/image for the real photos/screenshot/logo, and the Metadata API
-for SEO instead of hand-written meta tags.
-
-## Run it
-
-```bash
-npm install
-npm run dev
-```
-
-Open http://localhost:3000
-
-## Deploy
-
-Push to GitHub and import into Vercel (recommended), or run:
-
-```bash
-npm run build
-npm start
-```
-
-Set `NEXT_PUBLIC_GA_ID` (your GA4 Measurement ID, e.g. `G-XXXXXXXXXX`) as an
-environment variable in Vercel to enable Google Analytics — the site works
-fine without it, analytics just won't load.
+# AfriFoundry Website
 
 ## Site map — what's on every page
 
