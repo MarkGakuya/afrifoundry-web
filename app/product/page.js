@@ -5,9 +5,9 @@ import MoeDiagram from "@/components/MoeDiagram";
 export const metadata = { title: "Product — AfriFoundry" };
 
 const items = [
-  { title: "Grounded, not generated", body: "Every dictionary entry, pattern, and cultural note traces back to a real source file — nothing fabricated to look complete." },
-  { title: "Honest about maturity", body: "A domain only moves from general-purpose reasoning to Afri3B's own weights once it's actually earned that — never claimed early." },
-  { title: "Built for how Africa actually communicates", body: "Swahili, English, and code-switched queries — understood natively, not translated around." },
+  { title: "Grounded, not generated", body: "Every dictionary entry, pattern, and cultural note traces back to a real source file - nothing fabricated to look complete." },
+  { title: "Honest about maturity", body: "A domain only moves from general-purpose reasoning to Afri3B's own weights once it's actually earned that - never claimed early." },
+  { title: "Built for how Africa actually communicates", body: "Swahili, English, and code-switched queries - understood natively, not translated around." },
   { title: "A specialist across every sector — the goal, built sector by sector", body: "Not claimed all at once. Each sector earns real depth before Afri3B treats it as a specialty, the same discipline that governs every language." },
 ];
 
@@ -23,7 +23,7 @@ export default function Product() {
         </h1>
         <p className="mt-5 max-w-[60ch] text-lg text-ink-dim">
           Vocabulary, grammar patterns, and cultural context are recorded only from real ingested
-          text — never invented from general knowledge. Afri3B runs a hybrid model: general-purpose
+          text - never invented from general knowledge. Afri3B runs a hybrid model: general-purpose
           reasoning wrapped in African context today, shifting to Afri3B&apos;s own trained weights
           as each language earns it.
         </p>

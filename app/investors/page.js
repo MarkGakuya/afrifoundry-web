@@ -4,10 +4,10 @@ import CardList from "@/components/CardList";
 export const metadata = { title: "For Investors — AfriFoundry" };
 
 const items = [
-  { title: "The wedge is proven, not theoretical", body: "Live with a real Kenyan multi-marketplace and logistics partner — natural language search, visual search, and vendor analytics running against a real production catalogue today." },
-  { title: "Data moat, not a model moat", body: "Every language, price point, and market pattern is ingested and verified, not scraped and hoped-for. That corpus compounds — it's not reproducible by wrapping a bigger foundation model." },
-  { title: "Sold B2B, not fighting your customers", body: "AfriFoundry sells the intelligence layer to marketplaces and platforms — never competes with them for the same buyer." },
-  { title: "Honesty is the product discipline, not a slogan", body: "Every domain is gated behind real, earned maturity before it's trusted over general-purpose reasoning — the same discipline that keeps trust with partners keeps it with users." },
+  { title: "The wedge is proven, not theoretical", body: "Live with a real Kenyan multi-marketplace and logistics partner - natural language search, visual search, and vendor analytics running against a real production catalogue today." },
+  { title: "Data moat, not a model moat", body: "Every language, price point, and market pattern is ingested and verified, not scraped and hoped-for. That corpus compounds - it's not reproducible by wrapping a bigger foundation model." },
+  { title: "Sold B2B, not fighting your customers", body: "AfriFoundry sells the intelligence layer to marketplaces and platforms - never competes with them for the same buyer." },
+  { title: "Honesty is the product discipline, not a slogan", body: "Every domain is gated behind real, earned maturity before it's trusted over general-purpose reasoning - the same discipline that keeps trust with partners keeps it with users." },
 ];
 
 export default function Investors() {
@@ -20,7 +20,7 @@ export default function Investors() {
         </h1>
         <p className="mt-5 max-w-[60ch] text-lg text-ink-dim">
           Africa&apos;s languages and markets don&apos;t have AI infrastructure built from their
-          own ground truth — every major model today is adapted onto Africa afterward, not built
+          own ground truth - every major model today is adapted onto Africa afterward, not built
           from it. That gap is the thesis.
         </p>
 
@@ -28,7 +28,7 @@ export default function Investors() {
 
         <div className="mt-8 border-l-2 border-gold pl-6">
           <p className="max-w-[50ch] text-lg italic text-ink">
-            Built and run by a solo, bootstrapped founder from Mombasa since June 2025 — the
+            Built and run by a solo, bootstrapped founder from Mombasa since June 2025 -the
             constraint that forced real discipline over shortcuts.
           </p>
         </div>

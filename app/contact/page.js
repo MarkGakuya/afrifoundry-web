@@ -29,7 +29,7 @@ export default function Contact() {
             Send message
           </button>
           <p className="-mt-2 text-xs text-ink-dim">
-            Or email directly — general: hello@afrifoundry.com · support: support@afrifoundry.com
+            Or email directly, general: hello@afrifoundry.com · support: support@afrifoundry.com
           </p>
         </form>
 

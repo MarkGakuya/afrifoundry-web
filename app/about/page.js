@@ -4,9 +4,9 @@ import Link from "next/link";
 export const metadata = { title: "About — AfriFoundry" };
 
 const values = [
-  { title: "Never fabricate", body: "If the data doesn't exist yet, Afri3B says so — it doesn't invent an answer to sound complete." },
-  { title: "African ground truth first", body: "Kenyan markets, real languages, real usage — the foundation, not a translation layer over someone else's model." },
-  { title: "Earned, not claimed", body: "A capability is only real once it's actually built and tested — not announced ahead of it." },
+  { title: "Never fabricate", body: "If the data doesn't exist yet, Afri3B says so , it doesn't invent an answer to sound complete." },
+  { title: "African ground truth first", body: "Kenyan markets, real languages, real usage, the foundation, not a translation layer over someone else's model." },
+  { title: "Earned, not claimed", body: "A capability is only real once it's actually built and tested  not announced ahead of it." },
   { title: "Built in Africa, for Africa", body: "Decisions get made from Mombasa and Nairobi, for the markets AfriFoundry actually knows." },
 ];
 
@@ -17,10 +17,10 @@ const timeline = [
 ];
 
 const faqs = [
-  { q: "Is Afri3B live right now?", a: "Afri3B is live as a hybrid system — general-purpose reasoning wrapped in African context today, with Afri3B's own trained models taking over language by language as each one earns it. Nothing is claimed as \"fully trained\" before it actually is." },
+  { q: "Is Afri3B live right now?", a: "Afri3B is live as a hybrid system, general-purpose reasoning wrapped in African context today, with Afri3B's own trained models taking over language by language as each one earns it. Nothing is claimed as \"fully trained\" before it actually is." },
   { q: "What languages does it support?", a: "English and Swahili are handled natively today, including code-switched queries. More than ten additional African languages are in active ingestion and training." },
-  { q: "Where does the data come from?", a: "Real ingested sources only — manual collection, partner data, and verified corpora — never scraped and fabricated to look complete. If a word or pattern isn't verified, it's flagged, not guessed." },
-  { q: "How is this different from wrapping GPT or Gemini with African prompts?", a: "That's the starting point, not the destination — every domain is built toward its own trained weights from real African data, with the general-purpose layer only ever a honest, temporary scaffold." },
+  { q: "Where does the data come from?", a: "Real ingested sources only; manual collection, partner data, and verified corpora — never scraped and fabricated to look complete. If a word or pattern isn't verified, it's flagged, not guessed." },
+  { q: "How is this different from wrapping GPT or Gemini with African prompts?", a: "That's the starting point, not the destination - every domain is built toward its own trained weights from real African data, with the general-purpose layer only ever a honest, temporary scaffold." },
   { q: "Who's behind AfriFoundry?", a: "Mark Gakuya, founder and CEO, building from Mombasa and Nairobi, Kenya." },
 ];
 
@@ -75,7 +75,7 @@ export default function About() {
             <p className="text-ink-dim">
               AfriFoundry&apos;s first product was a general-purpose assistant wrapping existing
               AI models with African framing. It worked, but it wasn&apos;t building anything of
-              its own — every answer still came from somewhere else. That product was retired.
+              its own, every answer still came from somewhere else. That product was retired.
               Afri3B is the deliberate rebuild: infrastructure trained from real African ground
               truth, not adapted onto it afterward.
             </p>

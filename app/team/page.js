@@ -10,11 +10,11 @@ const roles = [
   },
   {
     title: "ML / data engineers",
-    body: "Fine-tuning, the hybrid router, and the self-building dictionary — real model work on real African data, not prompt tweaking.",
+    body: "Fine-tuning, the hybrid router, and the self-building dictionary - real model work on real African data, not prompt tweaking.",
   },
   {
     title: "Data analysts and verifiers",
-    body: "Checking and grounding ingested data — including native or near-native speakers who can verify language and market entries firsthand.",
+    body: "Checking and grounding ingested data - including native or near-native speakers who can verify language and market entries firsthand.",
   },
   {
     title: "Early operators who want to build from zero",
@@ -32,7 +32,7 @@ export default function Team() {
         </h1>
         <p className="mt-5 max-w-[60ch] text-lg text-ink-dim">
           AfriFoundry has been bootstrapped and run solo from Mombasa since June 2025. There
-          isn&apos;t a team page full of headshots yet, because there isn&apos;t a team yet —
+          isn&apos;t a team page full of headshots yet, because there isn&apos;t a team yet -
           that&apos;s the honest state of things, and it&apos;s changing now.
         </p>
 
@@ -47,10 +47,10 @@ export default function Team() {
         <div className="mt-10 border-t border-line pt-8">
           <h2 className="mb-2 text-xl font-semibold">Where things stand, honestly</h2>
           <p className="max-w-[55ch] text-ink-dim">
-            AfriFoundry is bootstrapped and pre-revenue — there&apos;s no set salary band to
+            AfriFoundry is bootstrapped and pre-revenue, there&apos;s no set salary band to
             quote yet. What&apos;s realistic today is a mix of contract work, deferred pay, and
             equity depending on the role and how it fits into what you&apos;re looking for.
-            There&apos;s no fixed template for this — it gets worked out directly, person by
+            There&apos;s no fixed template for this - it gets worked out directly, person by
             person, based on what makes sense for both sides.
           </p>
         </div>
@@ -58,7 +58,7 @@ export default function Team() {
         <div className="mt-10 border-t border-line pt-8">
           <h2 className="mb-2 text-xl font-semibold">Think you&apos;re a fit?</h2>
           <p className="max-w-[55ch] text-ink-dim">
-            If one of these sounds like you, reach out directly — every message gets read by
+            If one of these sounds like you, reach out directly, every message gets read by
             the founder, not a hiring pipeline.
           </p>
           <Link

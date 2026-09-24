@@ -3,9 +3,9 @@ import CardList from "@/components/CardList";
 
 const orgItems = [
   { title: "Language corpora — the biggest gap today", body: "Text and audio in Swahili, Kikuyu, Dholuo, Kalenjin, Maasai, Somali, Suba, Kambe, Luhya, and more. Parallel text (the same content in two languages) and paired audio-with-transcript are the most valuable — they're what the dictionary researcher and voice model actually need." },
-  { title: "Real commerce and market data", body: "Pricing, listings, and vendor patterns from informal and secondhand markets specifically — the segment formal retail data doesn't cover." },
-  { title: "Sector-specific data", body: "Real feasibility studies, market reports, and outcomes per sector — what lets Afri3B push back with something real instead of a generic guess." },
-  { title: "Cultural context, as it's actually used", body: "Real writing that contains cultural terms in real use — never generated or inferred from general knowledge." },
+  { title: "Real commerce and market data", body: "Pricing, listings, and vendor patterns from informal and secondhand markets specifically -the segment formal retail data doesn't cover." },
+  { title: "Sector-specific data", body: "Real feasibility studies, market reports, and outcomes per sector  what lets Afri3B push back with something real instead of a generic guess." },
+  { title: "Cultural context, as it's actually used", body: "Real writing that contains cultural terms in real use - never generated or inferred from general knowledge." },
 ];
 
 export default function Contribute() {
@@ -44,7 +44,7 @@ export default function Contribute() {
             Know a language Afri3B is still learning? Teach it one real word at a time.
           </h2>
           <p className="mt-3 max-w-[60ch] text-ink-dim">
-            The self-building dictionary grows from real, verified entries — a word, its meaning,
+            The self-building dictionary grows from real, verified entries - a word, its meaning,
             and the language it belongs to. Submit one below; each is reviewed by hand before it
             enters the pipeline, the same honesty discipline as everything else here.
           </p>
@@ -70,7 +70,7 @@ export default function Contribute() {
               Submit for review
             </button>
             <p className="-mt-2 text-xs text-ink-dim">
-              Opens your email app — reviewed manually for now, not yet a live automated submission.
+              Opens your email app - reviewed manually for now, not yet a live automated submission.
             </p>
           </form>
         </div>
