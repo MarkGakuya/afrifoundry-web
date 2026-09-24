@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a09;
+  --bg-raised: #161613;
+  --text: #f2efe6;
+  --text-dim: #b0ab9c;
+  --gold: #e8961f;
+  --green: #2e8b4e;
+  --line: rgba(242, 239, 230, 0.12);
+}
+
+:root.light {
+  --bg: #f6f3ea;
+  --bg-raised: #ece7d8;
+  --text: #17160f;
+  --text-dim: #5c584a;
+  --line: rgba(23, 22, 15, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.4rem 0.95rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
