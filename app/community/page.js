@@ -6,12 +6,12 @@ export const metadata = { title: "Community — AfriFoundry" };
 // the public-facing group inside the WhatsApp Community. Founding Circle and
 // AfriFoundry Team are reached through the application flow on /team, not
 // joined directly from here.
-const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/REPLACE_WITH_FOUNDING_100_INVITE_LINK";
+const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/EjoHjTIL8qC3XLs81feJze";
 
 // AfriFoundry's WhatsApp Business number (Cloud API), in international
 // format with no "+" or spaces, e.g. "254712345678". Falls back to a
 // placeholder until NEXT_PUBLIC_WHATSAPP_NUMBER is set in Vercel.
-const WHATSAPP_BUSINESS_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "REPLACE_WITH_NUMBER";
+const WHATSAPP_BUSINESS_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254729606960";
 
 const pillars = [
   {
@@ -74,7 +74,7 @@ export default function Community() {
           rel="noopener noreferrer"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 font-semibold text-[#17140c] transition-transform hover:-translate-y-0.5"
         >
-          Join Founding 100 →
+          Join Afrifoundry Community →
         </a>
 
         <div className="mt-16 grid grid-cols-1 gap-8 border-t border-line pt-12 md:grid-cols-3">
