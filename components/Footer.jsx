@@ -21,7 +21,7 @@ const socials = [
     ),
   },
   {
-    label: "WhatsApp",
+    label: "WhatsApp Channel",
     href: "https://whatsapp.com/channel/0029VbB1Yu07T8beQCLSJZ0I",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="h-[18px] w-[18px]">
@@ -29,36 +29,91 @@ const socials = [
       </svg>
     ),
   },
+  {
+    label: "The Validation Point (newsletter)",
+    href: "https://www.linkedin.com/newsletters/the-validation-point-7401988315769634816",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-[16px] w-[16px]">
+        <path d="M3 5.5A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5v-13Zm2.2.5 6.8 5.1L18.8 6H5.2ZM19 8.1l-6.4 4.8a1 1 0 0 1-1.2 0L5 8.1V18h14V8.1Z" />
+      </svg>
+    ),
+  },
+];
+
+const contacts = [
+  {
+    email: "hello@afrifoundry.com",
+    label: "General",
+    body: "Questions, press, or just saying hello.",
+  },
+  {
+    email: "partnerships@afrifoundry.com",
+    label: "Partnerships",
+    body: "Marketplaces and platforms integrating Afri3B.",
+  },
+  {
+    email: "support@afrifoundry.com",
+    label: "Investors, support & everything else",
+    body: "Investor inquiries, team applications, product support.",
+  },
 ];
 
 export default function Footer() {
   return (
     <footer className="border-t border-line py-10">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-6 px-6">
-        <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold">
-          <Image src="/logo.jpg" alt="AfriFoundry logo" width={26} height={26} className="rounded" />
-          AfriFoundry
-        </Link>
-        <div className="flex gap-5 text-sm text-ink-dim">
-          <Link href="/privacy">Privacy</Link>
-          <Link href="/terms">Terms</Link>
-          <Link href="/contact">Contact</Link>
+      <div className="mx-auto max-w-5xl px-6 lg:max-w-6xl xl:max-w-7xl xl:px-10">
+        <div className="flex flex-wrap items-start justify-between gap-8">
+          <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold">
+            <Image src="/logo.jpg" alt="AfriFoundry logo" width={26} height={26} className="rounded" />
+            AfriFoundry
+          </Link>
+
+          <details className="group max-w-xs">
+            <summary className="flex cursor-pointer list-none items-center gap-1 text-sm font-semibold text-ink">
+              Get in touch
+              <span className="font-mono text-gold group-open:hidden">+</span>
+              <span className="hidden font-mono text-gold group-open:inline">−</span>
+            </summary>
+            <div className="mt-3 space-y-3">
+              {contacts.map((c) => (
+                <div key={c.email}>
+                  <a href={`mailto:${c.email}`} className="text-sm font-semibold text-gold hover:underline">
+                    {c.email}
+                  </a>
+                  <p className="text-xs text-ink-dim">
+                    {c.label} — {c.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </details>
+
+          <div className="flex flex-col gap-2 text-sm text-ink-dim">
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
+            <Link href="/community" className="font-semibold text-gold">
+              Join the community →
+            </Link>
+          </div>
+
+          <div className="flex items-center gap-3">
+            {socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`AfriFoundry — ${s.label}`}
+                title={s.label}
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-line text-ink-dim transition-colors hover:text-ink"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
         </div>
-        <div className="flex items-center gap-3">
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`AfriFoundry on ${s.label}`}
-              className="flex h-8 w-8 items-center justify-center rounded-md border border-line text-ink-dim transition-colors hover:text-ink"
-            >
-              {s.icon}
-            </a>
-          ))}
-        </div>
-        <p className="text-sm text-ink-dim">&copy; 2026 AfriFoundry Limited.</p>
+
+        <p className="mt-8 text-sm text-ink-dim">&copy; 2026 AfriFoundry Limited.</p>
       </div>
     </footer>
   );

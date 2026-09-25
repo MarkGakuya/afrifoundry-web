@@ -1,15 +1,15 @@
-import Image from "next/image";
 import Link from "next/link";
 import StatRow from "@/components/StatRow";
 import SystemDiagram from "@/components/SystemDiagram";
 import RoadmapDiagram from "@/components/RoadmapDiagram";
+import AskAfri3B from "@/components/AskAfri3B";
 
 const overview = [
-  { href: "/product", title: "The Product", body: "Afri3B's architecture ; ingestion, self-building dictionary, specialist minimodels, hybrid router." },
+  { href: "/product", title: "The Product", body: "Afri3B's architecture — ingestion, self-building dictionary, specialist minimodels, hybrid router." },
   { href: "/partners", title: "For Businesses", body: "The AI layer for informal and secondhand commerce, sold B2B, already live with a real partner." },
-  { href: "/users", title: "For Users", body: "What Afri3B can actually do right now, for any user - Phase 1, honestly scoped." },
-  { href: "/investors", title: "For Investors", body: "Why infrastructure, why Africa, why now - the real thesis, no invented traction." },
-  { href: "/contribute", title: "Contribute", body: "What the pipeline actually needs - language corpora, market data, or one real word at a time." },
+  { href: "/users", title: "For Users", body: "What Afri3B can actually do right now, for any user — Phase 1, honestly scoped." },
+  { href: "/investors", title: "For Investors", body: "Why infrastructure, why Africa, why now — the real thesis, no invented traction." },
+  { href: "/contribute", title: "Contribute", body: "What the pipeline actually needs — language corpora, market data, or one real word at a time." },
   { href: "/about", title: "About", body: "Who's building this, the values that govern it, and the honest timeline so far." },
 ];
 
@@ -26,9 +26,9 @@ export default function Home() {
               The data and intelligence infrastructure layer for Africa.
             </h1>
             <p className="mt-5 max-w-[46ch] text-lg text-ink-dim">
-              AfriFoundry builds the systems that turn real African data ; markets, languages,
-              usage  into AI infrastructure the continent doesn&apos;t yet have. Afri3B is the
-              first product built on it.
+              AfriFoundry builds the systems that turn real African data — markets, languages,
+              usage — into AI infrastructure built deeply from the continent&apos;s own ground
+              truth. Afri3B is the first product built on it.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/product" className="rounded-md bg-gold px-6 py-3 font-semibold text-[#17140c]">
@@ -39,34 +39,24 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="mx-auto max-w-[300px]">
-            <Image
-              src="/product-screenshot.png"
-              alt="Real screenshot of the Afri3B chat product greeting a signed-in user"
-              width={420}
-              height={780}
-              className="w-full rounded-2xl border border-line shadow-[0_2px_10px_rgba(0,0,0,0.1)]"
-            />
+          <div className="mx-auto w-full max-w-[380px]">
+            <AskAfri3B />
             <p className="mt-4 text-center font-mono text-xs text-ink-dim">
-              The actual product. No mockup.
+              The actual product. No mockup. Full app at{" "}
+              <a
+                href="https://afri3b.afrifoundry.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold underline"
+              >
+                afri3b.afrifoundry.com
+              </a>
+              .
             </p>
           </div>
         </div>
 
         <StatRow />
-
-        <div className="mt-20 border-t border-line pt-14">
-          <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">MISSION</div>
-          <p className="max-w-[38ch] font-display text-2xl font-bold leading-snug md:text-3xl">
-            To build Africa&apos;s fully-equipped AI workstation - the single place every
-            African decision-maker, from farmer to founder, gets intelligence built from
-            Africa&apos;s own ground truth.
-          </p>
-          <p className="mt-5 max-w-[60ch] text-ink-dim">
-            Not a chatbot wrapped in African prompts, and not a slogan — an infrastructure
-            layer, built one verified word and one earned specialist at a time.
-          </p>
-        </div>
 
         <div className="mt-20 border-t border-line pt-14">
           <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">ROADMAP</div>

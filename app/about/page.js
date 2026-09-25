@@ -4,9 +4,9 @@ import Link from "next/link";
 export const metadata = { title: "About — AfriFoundry" };
 
 const values = [
-  { title: "Never fabricate", body: "If the data doesn't exist yet, Afri3B says so , it doesn't invent an answer to sound complete." },
-  { title: "African ground truth first", body: "Kenyan markets, real languages, real usage, the foundation, not a translation layer over someone else's model." },
-  { title: "Earned, not claimed", body: "A capability is only real once it's actually built and tested  not announced ahead of it." },
+  { title: "Never fabricate", body: "If the data doesn't exist yet, Afri3B says so — it doesn't invent an answer to sound complete." },
+  { title: "African ground truth first", body: "Kenyan markets, real languages, real usage — the foundation, not a translation layer over someone else's model." },
+  { title: "Earned, not claimed", body: "A capability is only real once it's actually built and tested — not announced ahead of it." },
   { title: "Built in Africa, for Africa", body: "Decisions get made from Mombasa and Nairobi, for the markets AfriFoundry actually knows." },
 ];
 
@@ -17,10 +17,10 @@ const timeline = [
 ];
 
 const faqs = [
-  { q: "Is Afri3B live right now?", a: "Afri3B is live as a hybrid system, general-purpose reasoning wrapped in African context today, with Afri3B's own trained models taking over language by language as each one earns it. Nothing is claimed as \"fully trained\" before it actually is." },
+  { q: "Is Afri3B live right now?", a: "Afri3B is live as a hybrid system — general-purpose reasoning wrapped in African context today, with Afri3B's own trained models taking over language by language as each one earns it. Nothing is claimed as \"fully trained\" before it actually is." },
   { q: "What languages does it support?", a: "English and Swahili are handled natively today, including code-switched queries. More than ten additional African languages are in active ingestion and training." },
-  { q: "Where does the data come from?", a: "Real ingested sources only; manual collection, partner data, and verified corpora — never scraped and fabricated to look complete. If a word or pattern isn't verified, it's flagged, not guessed." },
-  { q: "How is this different from wrapping GPT or Gemini with African prompts?", a: "That's the starting point, not the destination - every domain is built toward its own trained weights from real African data, with the general-purpose layer only ever a honest, temporary scaffold." },
+  { q: "Where does the data come from?", a: "Real ingested sources only — manual collection, partner data, and verified corpora — never scraped and fabricated to look complete. If a word or pattern isn't verified, it's flagged, not guessed." },
+  { q: "How is this different from wrapping GPT or Gemini with African prompts?", a: "That's the starting point, not the destination — every domain is built toward its own trained weights from real African data, with the general-purpose layer only ever a honest, temporary scaffold." },
   { q: "Who's behind AfriFoundry?", a: "Mark Gakuya, founder and CEO, building from Mombasa and Nairobi, Kenya." },
 ];
 
@@ -32,6 +32,19 @@ export default function About() {
         <h1 className="max-w-[20ch] font-display text-4xl font-bold md:text-5xl">
           Who&apos;s building this, and why it&apos;s built this way.
         </h1>
+
+        <div className="mt-10 border-l-2 border-gold pl-6">
+          <div className="mb-2 font-mono text-xs font-semibold tracking-wide text-gold">MISSION</div>
+          <p className="max-w-[42ch] font-display text-2xl font-bold leading-snug">
+            To build Africa&apos;s fully-equipped AI workstation — the single place every
+            African decision-maker, from farmer to founder, gets intelligence built from
+            Africa&apos;s own ground truth.
+          </p>
+          <p className="mt-4 max-w-[55ch] text-ink-dim">
+            Not a chatbot wrapped in African prompts, and not a slogan — an infrastructure
+            layer, built one verified word and one earned specialist at a time.
+          </p>
+        </div>
 
         <div className="mt-10 grid grid-cols-[130px_1fr] items-start gap-5 md:grid-cols-[200px_1fr] md:gap-9">
           <Image
@@ -52,20 +65,38 @@ export default function About() {
               from their own ground truth — Afri3B is the attempt to build it honestly, one
               verified word at a time.
             </p>
-            <a
-              href="mailto:mark@afrifoundry.com"
-              className="mt-4 inline-flex items-center gap-2 rounded-md bg-gold px-5 py-2.5 text-sm font-semibold text-[#17140c]"
-            >
-              Get in touch
-            </a>
-            <a
-              href="https://www.linkedin.com/in/markgakuya"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 ml-3 inline-flex items-center gap-2 rounded-md border border-line px-5 py-2.5 text-sm font-semibold text-ink-dim transition-colors hover:text-ink"
-            >
-              Connect on LinkedIn
-            </a>
+            <details className="group relative mt-4 inline-block">
+              <summary className="inline-flex cursor-pointer list-none items-center gap-2 rounded-md bg-gold px-5 py-2.5 text-sm font-semibold text-[#17140c]">
+                Get in touch
+                <span className="font-mono group-open:hidden">▾</span>
+                <span className="hidden font-mono group-open:inline">▴</span>
+              </summary>
+              <div className="absolute left-0 z-10 mt-2 w-56 space-y-1 rounded-md border border-line bg-bg-raised p-2 shadow-lg">
+                <a
+                  href="mailto:mark@afrifoundry.com"
+                  className="block rounded px-3 py-2 text-sm text-ink hover:bg-bg"
+                >
+                  Email
+                </a>
+                {/* TODO: confirm the real Instagram handle before launch */}
+                <a
+                  href="https://instagram.com/REPLACE_WITH_HANDLE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded px-3 py-2 text-sm text-ink hover:bg-bg"
+                >
+                  Instagram
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/markgakuya"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded px-3 py-2 text-sm text-ink hover:bg-bg"
+                >
+                  Connect on LinkedIn
+                </a>
+              </div>
+            </details>
           </div>
         </div>
 
@@ -75,7 +106,7 @@ export default function About() {
             <p className="text-ink-dim">
               AfriFoundry&apos;s first product was a general-purpose assistant wrapping existing
               AI models with African framing. It worked, but it wasn&apos;t building anything of
-              its own, every answer still came from somewhere else. That product was retired.
+              its own — every answer still came from somewhere else. That product was retired.
               Afri3B is the deliberate rebuild: infrastructure trained from real African ground
               truth, not adapted onto it afterward.
             </p>

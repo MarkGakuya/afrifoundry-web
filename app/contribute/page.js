@@ -1,11 +1,12 @@
 "use client";
 import CardList from "@/components/CardList";
+import TrainAfri3B from "@/components/TrainAfri3B";
 
 const orgItems = [
   { title: "Language corpora — the biggest gap today", body: "Text and audio in Swahili, Kikuyu, Dholuo, Kalenjin, Maasai, Somali, Suba, Kambe, Luhya, and more. Parallel text (the same content in two languages) and paired audio-with-transcript are the most valuable — they're what the dictionary researcher and voice model actually need." },
-  { title: "Real commerce and market data", body: "Pricing, listings, and vendor patterns from informal and secondhand markets specifically -the segment formal retail data doesn't cover." },
-  { title: "Sector-specific data", body: "Real feasibility studies, market reports, and outcomes per sector  what lets Afri3B push back with something real instead of a generic guess." },
-  { title: "Cultural context, as it's actually used", body: "Real writing that contains cultural terms in real use - never generated or inferred from general knowledge." },
+  { title: "Real commerce and market data", body: "Pricing, listings, and vendor patterns from informal and secondhand markets specifically — the segment formal retail data doesn't cover." },
+  { title: "Sector-specific data", body: "Real feasibility studies, market reports, and outcomes per sector — what lets Afri3B push back with something real instead of a generic guess." },
+  { title: "Cultural context, as it's actually used", body: "Real writing that contains cultural terms in real use — never generated or inferred from general knowledge." },
 ];
 
 export default function Contribute() {
@@ -41,38 +42,15 @@ export default function Contribute() {
         <div className="mt-16 border-t border-line pt-12">
           <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">CONTRIBUTE — INDIVIDUALS</div>
           <h2 className="max-w-[24ch] font-display text-2xl font-bold">
-            Know a language Afri3B is still learning? Teach it one real word at a time.
+            Know a language Afri3B is still learning? Teach it, live.
           </h2>
           <p className="mt-3 max-w-[60ch] text-ink-dim">
-            The self-building dictionary grows from real, verified entries - a word, its meaning,
-            and the language it belongs to. Submit one below; each is reviewed by hand before it
-            enters the pipeline, the same honesty discipline as everything else here.
+            A mini version of Afri3B lives right here, connected to the training pipeline. Teach
+            it a word, correct something it got wrong, or just talk to it — every message is
+            reviewed by hand before it enters the self-building dictionary, the same honesty
+            discipline as everything else here.
           </p>
-          <form
-            action="mailto:hello@afrifoundry.com"
-            method="post"
-            encType="text/plain"
-            className="mt-6 grid max-w-md gap-4"
-          >
-            <div>
-              <label htmlFor="word" className="mb-1 block text-sm font-semibold">Word or phrase</label>
-              <input id="word" name="Word" type="text" required className="w-full rounded-md border border-line bg-bg-raised px-3 py-2.5 text-sm" />
-            </div>
-            <div>
-              <label htmlFor="lang" className="mb-1 block text-sm font-semibold">Language</label>
-              <input id="lang" name="Language" type="text" required className="w-full rounded-md border border-line bg-bg-raised px-3 py-2.5 text-sm" />
-            </div>
-            <div>
-              <label htmlFor="meaning" className="mb-1 block text-sm font-semibold">What it means (in English or Swahili)</label>
-              <textarea id="meaning" name="Meaning" required rows={4} className="w-full rounded-md border border-line bg-bg-raised px-3 py-2.5 text-sm" />
-            </div>
-            <button type="submit" className="justify-self-start rounded-md bg-gold px-6 py-3 font-semibold text-[#17140c]">
-              Submit for review
-            </button>
-            <p className="-mt-2 text-xs text-ink-dim">
-              Opens your email app - reviewed manually for now, not yet a live automated submission.
-            </p>
-          </form>
+          <TrainAfri3B />
         </div>
       </div>
     </section>

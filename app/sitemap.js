@@ -10,7 +10,7 @@ const routes = [
   "/developers",
   "/users",
   "/contribute",
-  "/contact",
+  "/community",
   "/privacy",
   "/terms",
 ];
