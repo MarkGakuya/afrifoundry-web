@@ -16,7 +16,7 @@ const languages = ["Swahili", "English", "Kikuyu", "Dholuo", "Kalenjin", "Maasai
 export default function Product() {
   return (
     <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-5xl px-6 lg:max-w-6xl xl:max-w-7xl xl:px-10">
         <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">THE PRODUCT</div>
         <h1 className="max-w-[20ch] font-display text-4xl font-bold md:text-5xl">
           Afri3B learns a language the way it&apos;s actually spoken.

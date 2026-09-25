@@ -51,7 +51,7 @@ export default function TrainAfri3B() {
   }
 
   return (
-    <div className="mt-6 max-w-md">
+    <div className="mt-6 max-w-md lg:max-w-xl xl:max-w-2xl">
       {/* Pre-statement / consent */}
       <div className="rounded-md border border-line bg-bg-raised p-5">
         <p className="text-sm font-semibold text-ink">Before you start</p>
@@ -86,11 +86,11 @@ export default function TrainAfri3B() {
           consented ? "opacity-100" : "pointer-events-none opacity-40"
         }`}
       >
-        <div className="max-h-80 space-y-3 overflow-y-auto bg-bg p-4">
+        <div className="max-h-80 space-y-3 overflow-y-auto bg-bg p-4 lg:max-h-[26rem] lg:p-5">
           {messages.map((m, i) => (
             <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
               <div
-                className={`max-w-[85%] rounded-lg px-3 py-2 text-sm ${
+                className={`max-w-[85%] rounded-lg px-3 py-2 text-sm lg:px-4 lg:py-2.5 lg:text-[0.95rem] ${
                   m.role === "user"
                     ? "bg-gold text-[#17140c]"
                     : m.role === "system"
@@ -104,14 +104,14 @@ export default function TrainAfri3B() {
           ))}
           <div ref={endRef} />
         </div>
-        <div className="flex gap-2 border-t border-line bg-bg-raised p-3">
+        <div className="flex gap-2 border-t border-line bg-bg-raised p-3 lg:p-4">
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && send()}
             placeholder="Teach Afri3B something…"
             disabled={!consented}
-            className="flex-1 rounded-md border border-line bg-bg px-3 py-2 text-sm"
+            className="flex-1 rounded-md border border-line bg-bg px-3 py-2 text-sm lg:px-4 lg:py-2.5 lg:text-[0.95rem]"
           />
           {/* Honeypot — hidden from real users, bots often fill every field */}
           <input

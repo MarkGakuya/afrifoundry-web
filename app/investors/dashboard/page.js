@@ -29,7 +29,7 @@ export default async function InvestorDashboard() {
   if (!payload || payload.purpose !== "investor") {
     return (
       <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-5xl px-6">
+        <div className="mx-auto max-w-5xl px-6 lg:max-w-6xl xl:max-w-7xl xl:px-10">
           <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">
             NOT VERIFIED
           </div>
@@ -54,7 +54,7 @@ export default async function InvestorDashboard() {
 
   return (
     <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-5xl px-6 lg:max-w-6xl xl:max-w-7xl xl:px-10">
         <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">
           VERIFIED — INVESTOR VIEW
         </div>

@@ -2,15 +2,16 @@ import Link from "next/link";
 
 export const metadata = { title: "Community — AfriFoundry" };
 
-// TODO: replace with the actual WhatsApp Group invite link (the interactive
-// Founding Group, not the WhatsApp Channel linked in the footer — those are
-// two different WhatsApp products).
-const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/KZXM4v1r0xVL7HkwTYDycD";
+// TODO: replace with the actual invite link for "AfriFoundry Founding 100" —
+// the public-facing group inside the WhatsApp Community. Founding Circle and
+// AfriFoundry Team are reached through the application flow on /team, not
+// joined directly from here.
+const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/REPLACE_WITH_FOUNDING_100_INVITE_LINK";
 
 // AfriFoundry's WhatsApp Business number (Cloud API), in international
 // format with no "+" or spaces, e.g. "254712345678". Falls back to a
 // placeholder until NEXT_PUBLIC_WHATSAPP_NUMBER is set in Vercel.
-const WHATSAPP_BUSINESS_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254729606960";
+const WHATSAPP_BUSINESS_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "REPLACE_WITH_NUMBER";
 
 const pillars = [
   {
@@ -24,6 +25,29 @@ const pillars = [
   {
     title: "A hand in the training itself",
     body: "The people who teach Afri3B a word it doesn't know yet, correct it when it's wrong, or push back on an assumption it made.",
+  },
+];
+
+const groups = [
+  {
+    name: "Announcements",
+    who: "Everyone in the community, automatically",
+    body: "Official updates only — a shipped feature, a milestone, a real number that changed. Read-only, low-noise, the one channel where you'll never miss what actually matters.",
+  },
+  {
+    name: "AfriFoundry Founding 100",
+    who: "Open — this is the one you join below",
+    body: "The main room. Discussion, language and market insight, first look at what's shipping, and the weekly rhythm of content described below. Capped at 100 on purpose — small enough that showing up still means something.",
+  },
+  {
+    name: "Founding Circle",
+    who: "By application — see /team",
+    body: "A smaller working group for people moving through the team application process, after a first conversation with Afri3B and before joining the core team.",
+  },
+  {
+    name: "AfriFoundry Team",
+    who: "Core team only",
+    body: "Where the actual work happens day to day, once someone's fully in.",
   },
 ];
 
@@ -41,15 +65,8 @@ export default function Community() {
           AfriFoundry started as one person, bootstrapped, from Mombasa. It doesn&apos;t stay
           that way by accident — it grows because people who believe African AI infrastructure
           should be built by Africans, from African ground truth, show up and help build it.
-          That&apos;s the movement. The Founding Group is where it happens.
+          That&apos;s the movement. Founding 100 is where it happens.
         </p>
-
-        <div className="mt-8 border-l-2 border-gold pl-6">
-          <p className="max-w-[55ch] text-lg italic text-ink">
-            Currently 69 members and active — the earliest people in the room, before any of
-            this was proven. This page is the rebuild around what that group is actually for.
-          </p>
-        </div>
 
         <a
           href={WHATSAPP_GROUP_URL}
@@ -57,7 +74,7 @@ export default function Community() {
           rel="noopener noreferrer"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 font-semibold text-[#17140c] transition-transform hover:-translate-y-0.5"
         >
-          Join the Founding Group →
+          Join Founding 100 →
         </a>
 
         <div className="mt-16 grid grid-cols-1 gap-8 border-t border-line pt-12 md:grid-cols-3">
@@ -69,16 +86,42 @@ export default function Community() {
           ))}
         </div>
 
+        <div className="mt-16 border-t border-line pt-12">
+          <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">
+            HOW IT&apos;S STRUCTURED
+          </div>
+          <h2 className="max-w-[28ch] font-display text-2xl font-bold">
+            One community, four rooms — each with an actual reason to exist.
+          </h2>
+          <p className="mt-4 max-w-[55ch] text-ink-dim">
+            Not four groups for the sake of it — four distinct stages, from "just joined" to
+            "on the core team," each with a different amount of noise and a different bar to
+            get in.
+          </p>
+          <div className="mt-8 space-y-6">
+            {groups.map((g, i) => (
+              <div key={g.name} className="flex gap-5 border-t border-line pt-6 first:border-t-0 first:pt-0">
+                <div className="font-mono text-sm text-ink-dim">{String(i + 1).padStart(2, "0")}</div>
+                <div>
+                  <h3 className="font-semibold text-ink">{g.name}</h3>
+                  <p className="mt-0.5 text-xs font-semibold text-gold">{g.who}</p>
+                  <p className="mt-2 max-w-[55ch] text-sm text-ink-dim">{g.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="mt-16 grid grid-cols-1 gap-10 border-t border-line pt-12 md:grid-cols-2">
           <div>
             <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">
-              THE GROUP IS FOR PEOPLE
+              THE GROUPS ARE FOR PEOPLE
             </div>
             <h2 className="font-display text-2xl font-bold">Human-run, on purpose.</h2>
             <p className="mt-4 max-w-[55ch] text-ink-dim">
               WhatsApp doesn&apos;t let a bot join or post inside a group chat — not a limit
-              we&apos;re working around, a deliberate one we respect. So the Founding Group
-              stays what it&apos;s always been: real conversation, run by people.
+              we&apos;re working around, a deliberate one we respect. Every room above stays
+              what it&apos;s always been: real conversation, run by people.
             </p>
           </div>
           <div>
@@ -108,7 +151,11 @@ export default function Community() {
               Contribute
             </Link>{" "}
             — a live mini version of Afri3B lives there, connected straight to the training
-            pipeline.
+            pipeline. Or see an open role and start an application conversation on{" "}
+            <Link href="/team" className="text-gold underline">
+              Team
+            </Link>
+            .
           </p>
         </div>
       </div>

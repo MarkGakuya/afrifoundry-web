@@ -16,7 +16,7 @@ const overview = [
 export default function Home() {
   return (
     <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-5xl px-6 lg:max-w-6xl xl:max-w-7xl xl:px-10">
         <div className="grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
           <div>
             <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">
@@ -39,7 +39,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="mx-auto w-full max-w-[380px]">
+          <div className="mx-auto w-full max-w-[380px] lg:max-w-[440px] xl:max-w-[500px]">
             <AskAfri3B />
             <p className="mt-4 text-center font-mono text-xs text-ink-dim">
               The actual product. No mockup. Full app at{" "}
@@ -68,6 +68,29 @@ export default function Home() {
             ahead of the evidence.
           </p>
           <RoadmapDiagram />
+        </div>
+
+        <div className="mt-20 border-t border-line pt-14">
+          <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-line bg-bg-raised p-8 md:flex-row md:items-center">
+            <div>
+              <div className="mb-2 font-mono text-xs font-semibold tracking-wide text-gold">
+                THE COMMUNITY
+              </div>
+              <h2 className="max-w-[32ch] font-display text-2xl font-bold">
+                AfriFoundry Founding 100 — the earliest people in the room.
+              </h2>
+              <p className="mt-3 max-w-[55ch] text-ink-dim">
+                Not just a chat — the people teaching Afri3B, first to see what&apos;s shipped,
+                and part of building this from before it was proven.
+              </p>
+            </div>
+            <Link
+              href="/community"
+              className="shrink-0 whitespace-nowrap rounded-full bg-gold px-6 py-3 font-semibold text-[#17140c] transition-transform hover:-translate-y-0.5"
+            >
+              Join the movement →
+            </Link>
+          </div>
         </div>
 
         <div className="mt-20 border-t border-line pt-14">

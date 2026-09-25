@@ -68,11 +68,11 @@ export default function AskAfri3B() {
         <span className="ml-auto font-mono text-xs text-ink-dim">the actual product</span>
       </div>
 
-      <div className="max-h-72 space-y-3 overflow-y-auto bg-bg p-4">
+      <div className="max-h-72 space-y-3 overflow-y-auto bg-bg p-4 lg:max-h-[22rem] lg:p-5">
         {messages.map((m, i) => (
           <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
             <div
-              className={`max-w-[85%] rounded-lg px-3 py-2 text-sm ${
+              className={`max-w-[85%] rounded-lg px-3 py-2 text-sm lg:px-4 lg:py-2.5 lg:text-[0.95rem] ${
                 m.role === "user"
                   ? "bg-gold text-[#17140c]"
                   : m.role === "system"
@@ -87,13 +87,13 @@ export default function AskAfri3B() {
         <div ref={endRef} />
       </div>
 
-      <div className="flex gap-2 border-t border-line bg-bg-raised p-3">
+      <div className="flex gap-2 border-t border-line bg-bg-raised p-3 lg:p-4">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && send()}
           placeholder="Ask something…"
-          className="flex-1 rounded-md border border-line bg-bg px-3 py-2 text-sm"
+          className="flex-1 rounded-md border border-line bg-bg px-3 py-2 text-sm lg:px-4 lg:py-2.5 lg:text-[0.95rem]"
         />
         {/* Honeypot */}
         <input

@@ -47,7 +47,7 @@ export default function DevPlayground() {
   }
 
   return (
-    <div className="mt-6 max-w-2xl">
+    <div className="mt-6 max-w-2xl xl:max-w-3xl">
       <div className="flex items-center justify-between">
         <p className="text-sm text-ink-dim">
           Live against the same backend as the website and WhatsApp — real requests, real

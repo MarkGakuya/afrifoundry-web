@@ -3,7 +3,7 @@ export const metadata = { title: "Terms of Use — AfriFoundry" };
 export default function Terms() {
   return (
     <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-5xl px-6 lg:max-w-6xl xl:max-w-7xl xl:px-10">
         <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">TERMS OF USE</div>
         <h1 className="font-display text-3xl font-bold">Using AfriFoundry and Afri3B</h1>
         <h3 className="mb-2 mt-7 font-semibold">Use it lawfully</h3>

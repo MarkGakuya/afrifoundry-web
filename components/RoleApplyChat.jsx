@@ -99,7 +99,7 @@ export default function RoleApplyChat({ role }) {
 
   if (submitStatus === "submitted") {
     return (
-      <div className="max-w-md rounded-md border border-line bg-bg-raised p-5">
+      <div className="max-w-md lg:max-w-lg xl:max-w-xl rounded-md border border-line bg-bg-raised p-5">
         <p className="text-sm font-semibold text-ink">Sent — thank you.</p>
         <p className="mt-2 text-sm text-ink-dim">
           A human reads every application personally. You&apos;ll hear back directly.
@@ -109,7 +109,7 @@ export default function RoleApplyChat({ role }) {
   }
 
   return (
-    <div className="max-w-md">
+    <div className="max-w-md lg:max-w-lg xl:max-w-xl">
       <div className="overflow-hidden rounded-md border border-line">
         <div className="max-h-72 space-y-3 overflow-y-auto bg-bg p-4">
           {messages.map((m, i) => (

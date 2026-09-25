@@ -3,7 +3,7 @@ export const metadata = { title: "Privacy Policy — AfriFoundry" };
 export default function Privacy() {
   return (
     <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-5xl px-6 lg:max-w-6xl xl:max-w-7xl xl:px-10">
         <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">PRIVACY POLICY</div>
         <h1 className="font-display text-3xl font-bold">How AfriFoundry handles your data</h1>
         <p className="mt-4 text-ink-dim">

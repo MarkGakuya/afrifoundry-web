@@ -95,6 +95,7 @@ real values. Search the codebase for them:
 | `/partners` | For commerce/logistics platforms. CTA routes to `partnerships@afrifoundry.com`. |
 | `/investors` | The infrastructure thesis, plus a real **email-verified gate** (`/investors/dashboard`) — no password, a signed magic link — that renders live metrics once `AFRIFOUNDRY_METRICS_API_URL` is connected. |
 | `/developers` | API docs plus a clearly-labeled example request/response, and a real **email-verified live playground** (`/developers/playground`) that talks directly to Afri3B. |
+| `/marketing/studio` **(new, internal)** | Same email-verified gate — Afri3B drafts social content per platform, a human reviews and copies before posting anywhere. Linked quietly from the bottom of `/team`, not in the main nav. |
 | `/users` | What Afri3B can do today. CTA now links straight out to `afri3b.afrifoundry.com` instead of a contact page. |
 | `/contribute` | Org data partnerships (unchanged, mailto flow) **plus** a live chat-style **mini-Afri3B training widget** for individuals — no structured form, just a message box wired to `/api/contribute`. |
 | `/community` **(new)** | The WhatsApp Founding Group, rebuilt around a "you're part of building this" ownership narrative. Explains honestly why Afri3B isn't inside the group (WhatsApp's official API can't post into groups), and links to messaging Afri3B one-on-one instead. |

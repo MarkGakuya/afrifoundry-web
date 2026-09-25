@@ -175,8 +175,27 @@ and risks the number getting banned. Not a gap, a boundary.
 
 | File | Placeholder | What to do |
 |---|---|---|
-| `app/community/page.js` | `WHATSAPP_GROUP_URL` | Swap in the real Founding Group invite link (`chat.whatsapp.com/...`) |
+| `app/community/page.js` | `WHATSAPP_GROUP_URL` | Swap in the real Founding 100 invite link (`chat.whatsapp.com/...`) |
 | `app/about/page.js` | Instagram link, `REPLACE_WITH_HANDLE` | Swap in the real handle |
+
+---
+
+## 9. Marketing Studio (internal tool)
+
+**Powers:** `/marketing/studio` — Afri3B drafts social content per platform
+(LinkedIn, X, Instagram, WhatsApp Channel, Newsletter), a human reviews,
+copies, and posts manually. Nothing posts on its own.
+
+**No new env vars needed** — it reuses `AFRIFOUNDRY_CHAT_API_URL` (§1) for
+drafting and the same magic-link system (§5, §6) for access, gated behind
+a `marketing` purpose. Saved drafts live in the browser's `localStorage`,
+not a database — fine for one or two internal users, worth moving to a
+real store only if more people need to share a draft queue.
+
+**Not built — needs platform API keys if you want it later:** per-platform
+analytics (LinkedIn, X, Instagram Graph API each require their own app
+review and access token) and actual auto-posting. The Studio's analytics
+panel says exactly this rather than showing fabricated numbers.
 
 ---
 

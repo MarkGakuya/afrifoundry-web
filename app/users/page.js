@@ -13,7 +13,7 @@ const items = [
 export default function Users() {
   return (
     <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-5xl px-6 lg:max-w-6xl xl:max-w-7xl xl:px-10">
         <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">
           PHASE 1 — AVAILABLE TO EVERY USER
         </div>
