@@ -5,12 +5,12 @@ export const metadata = { title: "Community — AfriFoundry" };
 // TODO: replace with the actual WhatsApp Group invite link (the interactive
 // Founding Group, not the WhatsApp Channel linked in the footer — those are
 // two different WhatsApp products).
-const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/REPLACE_WITH_GROUP_INVITE_LINK";
+const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/KZXM4v1r0xVL7HkwTYDycD";
 
 // AfriFoundry's WhatsApp Business number (Cloud API), in international
 // format with no "+" or spaces, e.g. "254712345678". Falls back to a
 // placeholder until NEXT_PUBLIC_WHATSAPP_NUMBER is set in Vercel.
-const WHATSAPP_BUSINESS_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "REPLACE_WITH_NUMBER";
+const WHATSAPP_BUSINESS_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254729606960";
 
 const pillars = [
   {
