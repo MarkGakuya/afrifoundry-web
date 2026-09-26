@@ -10,7 +10,6 @@ import { signToken, verifyToken } from "@/lib/jwt";
 const PURPOSES = {
   investor: { dashboardPath: "/investors/dashboard", cookieName: "af_investor_session" },
   developer: { dashboardPath: "/developers/playground", cookieName: "af_developer_session" },
-  marketing: { dashboardPath: "/marketing/studio", cookieName: "af_marketing_session" },
 };
 
 const THIRTY_DAYS = 60 * 60 * 24 * 30;

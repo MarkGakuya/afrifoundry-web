@@ -175,31 +175,49 @@ and risks the number getting banned. Not a gap, a boundary.
 
 | File | Placeholder | What to do |
 |---|---|---|
-| `app/community/page.js` | `WHATSAPP_GROUP_URL` | Swap in the real Founding 100 invite link (`chat.whatsapp.com/...`) |
+| `app/community/page.js` | `WHATSAPP_GROUP_URL` | The community is named **The Forge** (finalized, already set in `COMMUNITY_NAME`/`COMMUNITY_NAME_TITLE`) — just swap in the real invite link for the main public group. |
 | `app/about/page.js` | Instagram link, `REPLACE_WITH_HANDLE` | Swap in the real handle |
 
 ---
 
-## 9. Marketing Studio (internal tool)
+## 9. Marketing agent (lives in WhatsApp, not the website)
 
-**Powers:** `/marketing/studio` — Afri3B drafts social content per platform
-(LinkedIn, X, Instagram, WhatsApp Channel, Newsletter), a human reviews,
-copies, and posts manually. Nothing posts on its own.
+**Powers:** DM the AfriFoundry WhatsApp number as an admin, send
+`/marketing <platform> <brief>`, get a real Afri3B-drafted post back in the
+same chat. Reviewed and posted by a human — nothing auto-publishes.
 
-**No new env vars needed** — it reuses `AFRIFOUNDRY_CHAT_API_URL` (§1) for
-drafting and the same magic-link system (§5, §6) for access, gated behind
-a `marketing` purpose. Saved drafts live in the browser's `localStorage`,
-not a database — fine for one or two internal users, worth moving to a
-real store only if more people need to share a draft queue.
+This deliberately isn't a website page. It rides on the WhatsApp webhook
+from §7 — same phone number members already DM Afri3B on, just with one
+extra command that only works for numbers on an allowlist.
+
+| Env var | Where it's set | What it is |
+|---|---|---|
+| `MARKETING_AGENT_ADMIN_NUMBERS` | Vercel | Comma-separated WhatsApp numbers, E.164 with no `+` (e.g. `254712345678,254798765432`). Anyone not on this list can send `/marketing` all day and it just gets answered as a normal message — no special behavior leaks to them. |
+
+**No other new env vars** — it reuses `AFRIFOUNDRY_CHAT_API_URL` (§1) and
+the WhatsApp setup from §7. Nothing to provision beyond adding your number
+to the allowlist.
+
+**Usage** (from an admin number, as a normal WhatsApp message):
+```
+/marketing linkedin announce the investor dashboard going live
+/marketing instagram a Ground Truth Drop about the new Swahili entries
+/marketing this week's Build Log — shipped the WhatsApp integration
+```
+First word after `/marketing` is checked against known platforms
+(`linkedin`, `x`, `instagram`, `whatsapp`, `newsletter`, `forge`). If it
+doesn't match one, the whole message is treated as the brief and drafted
+for The Forge by default, since that's this agent's home.
 
 **Not built — needs platform API keys if you want it later:** per-platform
 analytics (LinkedIn, X, Instagram Graph API each require their own app
-review and access token) and actual auto-posting. The Studio's analytics
-panel says exactly this rather than showing fabricated numbers.
+review and access token) and actual auto-posting. Both would be genuinely
+new integrations, not an extension of this command.
 
 ---
 
 ## Suggested order to wire things up
+
 
 1. **Resend (§6)** — unblocks investor/developer verification AND team
    applications in one step, and needs no other backend work.
@@ -207,11 +225,14 @@ panel says exactly this rather than showing fabricated numbers.
    the homepage widget, WhatsApp, the dev playground, and team application
    chat all at once.
 3. **WhatsApp (§7)** — once §1 and §6 exist, this is mostly Meta dashboard
-   configuration, not code.
+   configuration, not code. Add `MARKETING_AGENT_ADMIN_NUMBERS` (§9) at the
+   same time — it's just your own number, no extra setup.
 4. **Training relay (§2)** and **metrics (§3)** — lower urgency, each is
    independent and can land whenever the corresponding backend piece is
    ready.
-5. **The two placeholders (§8)** — anytime, thirty seconds each.
+5. **The two placeholders (§8)** — anytime, thirty seconds each. `The Forge`
+   is now the final name (was "Founding 100") — just needs the real invite
+   link.
 
 Every piece above was built to fail honestly and independently — there's no
 order that breaks anything. Wire up one, see it come alive, move to the next.

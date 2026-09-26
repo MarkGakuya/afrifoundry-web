@@ -23,7 +23,7 @@
 //
 // Response expected back: { reply: string }
 
-const VALID_SOURCES = ["website", "whatsapp", "developer-playground", "team-application", "marketing-studio"];
+const VALID_SOURCES = ["website", "whatsapp", "whatsapp-marketing", "developer-playground", "team-application"];
 
 export async function POST(request) {
   let body;

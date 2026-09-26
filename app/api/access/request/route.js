@@ -16,7 +16,6 @@ import { sendEmail } from "@/lib/email";
 const PURPOSES = {
   investor: { label: "Investor" },
   developer: { label: "Developer" },
-  marketing: { label: "Marketing Studio" },
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

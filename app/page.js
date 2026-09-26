@@ -77,7 +77,7 @@ export default function Home() {
                 THE COMMUNITY
               </div>
               <h2 className="max-w-[32ch] font-display text-2xl font-bold">
-                AfriFoundry Founding 100 — the earliest people in the room.
+                The Forge — the earliest people in the room.
               </h2>
               <p className="mt-3 max-w-[55ch] text-ink-dim">
                 Not just a chat — the people teaching Afri3B, first to see what&apos;s shipped,

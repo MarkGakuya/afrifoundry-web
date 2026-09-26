@@ -6,6 +6,13 @@
 // directly, one-on-one, using the same live Afri3B backend as the website's
 // "Ask Afri3B" widget (app/api/chat/route.js).
 //
+// It ALSO carries the marketing agent — lives here, in the community
+// channel, not on the website. When someone on the admin allowlist sends
+// "/marketing <platform> <brief>", Afri3B drafts that post and replies with
+// it, right there in the same DM. Everyone else's messages (including
+// anything that happens to start with "/marketing" from a non-admin number)
+// are just answered normally — there's no separate mode to discover.
+//
 // Setup (Meta for Developers → your App → WhatsApp product):
 //   1. Add a phone number, note its Phone Number ID.
 //   2. Generate a permanent access token (System User token, not the
@@ -22,13 +29,37 @@
 //                              incoming webhook calls actually came from Meta
 //                              (HMAC signature check) — without this, anyone
 //                              who finds the URL could POST fake messages.
+//   MARKETING_AGENT_ADMIN_NUMBERS — comma-separated WhatsApp numbers (E.164,
+//                              no "+", e.g. "254712345678,254798765432")
+//                              allowed to trigger the marketing agent. Any
+//                              number not on this list never sees that
+//                              behavior, no matter what they send.
 //
 // Also uses AFRIFOUNDRY_CHAT_API_URL / AFRIFOUNDRY_CHAT_API_KEY (same as
 // app/api/chat/route.js) to get Afri3B's actual reply.
+//
+// Marketing agent usage (admin numbers only), sent as a normal WhatsApp message:
+//   /marketing linkedin announce the investor dashboard going live
+//   /marketing instagram a Ground Truth Drop about the new Swahili entries
+//   /marketing this week's Build Log — shipped the WhatsApp integration
+// First word after "/marketing" is checked against known platforms
+// (linkedin, x, instagram, whatsapp, newsletter, forge); if it doesn't
+// match one, the whole thing is treated as the brief and drafted for The
+// Forge by default, since that's this agent's home.
 
 import crypto from "crypto";
 
 const GRAPH_VERSION = "v21.0";
+
+const PLATFORM_ALIASES = {
+  linkedin: "LinkedIn",
+  x: "X",
+  twitter: "X",
+  instagram: "Instagram",
+  whatsapp: "WhatsApp Channel",
+  newsletter: "Newsletter",
+  forge: "The Forge",
+};
 
 // --- Webhook verification handshake (Meta calls this once, on setup) ---
 export async function GET(request) {
@@ -65,12 +96,63 @@ export async function POST(request) {
     return new Response("OK", { status: 200 });
   }
 
-  const reply = await getAfri3BReply(message.text, message.from);
+  const marketingCommand = isAdmin(message.from) ? parseMarketingCommand(message.text) : null;
+
+  const reply = marketingCommand
+    ? await getMarketingDraft(marketingCommand, message.from)
+    : await getAfri3BReply(message.text, message.from);
+
   if (reply) {
     await sendWhatsAppMessage(message.from, reply);
   }
 
   return new Response("OK", { status: 200 });
+}
+
+function isAdmin(from) {
+  const list = (process.env.MARKETING_AGENT_ADMIN_NUMBERS || "")
+    .split(",")
+    .map((n) => n.trim())
+    .filter(Boolean);
+  return list.includes(from);
+}
+
+function parseMarketingCommand(text) {
+  const match = text.trim().match(/^\/marketing\b\s*(.*)$/is);
+  if (!match) return null;
+
+  const rest = match[1].trim();
+  if (!rest) return { platform: "The Forge", brief: "", empty: true };
+
+  const [firstWord, ...restWords] = rest.split(/\s+/);
+  const alias = PLATFORM_ALIASES[firstWord.toLowerCase()];
+
+  if (alias) {
+    return { platform: alias, brief: restWords.join(" ").trim() };
+  }
+  return { platform: "The Forge", brief: rest };
+}
+
+async function getMarketingDraft(command, from) {
+  if (command.empty || !command.brief) {
+    return (
+      "Marketing agent — usage:\n" +
+      "/marketing <platform> <brief>\n\n" +
+      "Platforms: linkedin, x, instagram, whatsapp, newsletter, forge (default)\n" +
+      "Example: /marketing linkedin announce the investor dashboard going live"
+    );
+  }
+
+  const context =
+    `Marketing agent context: draft a ${command.platform} post for AfriFoundry. ` +
+    `Voice: honest, no hype, matches AfriFoundry's website tone exactly — plain language, ` +
+    `never fabricate metrics or claims, "earned not claimed." Length and format appropriate ` +
+    `for ${command.platform}.`;
+
+  const draft = await getAfri3BReply(command.brief, from, context);
+  if (!draft) return null;
+
+  return `📝 Draft for ${command.platform}:\n\n${draft}\n\nReview it, then post it yourself. Send /marketing again for another.`;
 }
 
 function verifySignature(rawBody, signatureHeader) {
@@ -97,7 +179,7 @@ function extractMessage(payload) {
   }
 }
 
-async function getAfri3BReply(text, from) {
+async function getAfri3BReply(text, from, context) {
   const endpoint = process.env.AFRIFOUNDRY_CHAT_API_URL;
   const apiKey = process.env.AFRIFOUNDRY_CHAT_API_KEY;
 
@@ -116,7 +198,8 @@ async function getAfri3BReply(text, from) {
       body: JSON.stringify({
         message: text,
         sessionId: `whatsapp:${from}`,
-        source: "whatsapp",
+        source: context ? "whatsapp-marketing" : "whatsapp",
+        context: context || null,
         submittedAt: new Date().toISOString(),
       }),
     });

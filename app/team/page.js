@@ -1,4 +1,3 @@
-import Link from "next/link";
 import RoleApplyChat from "@/components/RoleApplyChat";
 
 export const metadata = { title: "Team — AfriFoundry" };
@@ -126,12 +125,6 @@ export default function Team() {
             There&apos;s no fixed template for this — it gets worked out directly, person by
             person, based on what makes sense for both sides.
           </p>
-        </div>
-
-        <div className="mt-14 border-t border-line pt-6">
-          <Link href="/marketing/studio" className="text-xs text-ink-dim underline">
-            Team tools: Marketing Studio →
-          </Link>
         </div>
       </div>
     </section>

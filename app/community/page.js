@@ -2,16 +2,19 @@ import Link from "next/link";
 
 export const metadata = { title: "Community — AfriFoundry" };
 
-// TODO: replace with the actual invite link for "AfriFoundry Founding 100" —
-// the public-facing group inside the WhatsApp Community. Founding Circle and
-// AfriFoundry Team are reached through the application flow on /team, not
-// joined directly from here.
-const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/EjoHjTIL8qC3XLs81feJze";
+const COMMUNITY_NAME = "the Forge";
+const COMMUNITY_NAME_TITLE = "The Forge";
+
+// TODO: replace with the actual invite link for The Forge — the main
+// public group, open for anyone to join. Founding Circle and AfriFoundry
+// Team are reached through the application flow on /team, not joined
+// directly from here.
+const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/REPLACE_WITH_INVITE_LINK";
 
 // AfriFoundry's WhatsApp Business number (Cloud API), in international
 // format with no "+" or spaces, e.g. "254712345678". Falls back to a
 // placeholder until NEXT_PUBLIC_WHATSAPP_NUMBER is set in Vercel.
-const WHATSAPP_BUSINESS_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254729606960";
+const WHATSAPP_BUSINESS_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "REPLACE_WITH_NUMBER";
 
 const pillars = [
   {
@@ -35,9 +38,9 @@ const groups = [
     body: "Official updates only — a shipped feature, a milestone, a real number that changed. Read-only, low-noise, the one channel where you'll never miss what actually matters.",
   },
   {
-    name: "AfriFoundry Founding 100",
+    name: COMMUNITY_NAME_TITLE,
     who: "Open — this is the one you join below",
-    body: "The main room. Discussion, language and market insight, first look at what's shipping, and the weekly rhythm of content described below. Capped at 100 on purpose — small enough that showing up still means something.",
+    body: "The main room. Discussion, language and market insight, first look at what's shipping, and the weekly rhythm of content described below. Small enough on purpose — showing up still means something.",
   },
   {
     name: "Founding Circle",
@@ -58,14 +61,15 @@ export default function Community() {
         <div className="mb-3 font-mono text-xs font-semibold tracking-wide text-gold">
           THE AFRIFOUNDRY COMMUNITY
         </div>
-        <h1 className="max-w-[20ch] font-display text-4xl font-bold md:text-5xl">
-          You&apos;re not just using Afri3B. You&apos;re part of building it.
+        <h1 className="max-w-[22ch] font-display text-4xl font-bold md:text-5xl">
+          You&apos;re not just using Afri3B. You&apos;re part of forging it.
         </h1>
         <p className="mt-5 max-w-[60ch] text-lg text-ink-dim">
           AfriFoundry started as one person, bootstrapped, from Mombasa. It doesn&apos;t stay
           that way by accident — it grows because people who believe African AI infrastructure
           should be built by Africans, from African ground truth, show up and help build it.
-          That&apos;s the movement. Founding 100 is where it happens.
+          That&apos;s the movement. {COMMUNITY_NAME_TITLE} is where it happens — raw language,
+          raw market knowledge, raw correction, shaped into something real.
         </p>
 
         <a
@@ -74,7 +78,7 @@ export default function Community() {
           rel="noopener noreferrer"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 font-semibold text-[#17140c] transition-transform hover:-translate-y-0.5"
         >
-          Join Afrifoundry Community →
+          Join {COMMUNITY_NAME} →
         </a>
 
         <div className="mt-16 grid grid-cols-1 gap-8 border-t border-line pt-12 md:grid-cols-3">
