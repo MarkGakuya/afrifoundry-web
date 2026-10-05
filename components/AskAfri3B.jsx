@@ -36,6 +36,13 @@ export default function AskAfri3B() {
         body: JSON.stringify({
           message: text,
           sessionId: sessionId.current,
+          history: messages
+            .filter((message) => message.role === "user" || message.role === "afri3b")
+            .map((message) => ({
+              role: message.role === "afri3b" ? "assistant" : "user",
+              content: message.text,
+            }))
+            .slice(-8),
           source: "website",
           company,
         }),
@@ -68,7 +75,12 @@ export default function AskAfri3B() {
         <span className="ml-auto font-mono text-xs text-ink-dim">the actual product</span>
       </div>
 
-      <div className="max-h-72 space-y-3 overflow-y-auto bg-bg p-4 lg:max-h-[22rem] lg:p-5">
+      <div
+        className="max-h-72 space-y-3 overflow-y-auto bg-bg p-4 lg:max-h-[22rem] lg:p-5"
+        role="log"
+        aria-label="Conversation with Afri3B"
+        aria-busy={sending}
+      >
         {messages.map((m, i) => (
           <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
             <div
@@ -84,6 +96,7 @@ export default function AskAfri3B() {
             </div>
           </div>
         ))}
+        {sending && <p className="text-xs text-ink-dim" role="status">Afri3B is responding…</p>}
         <div ref={endRef} />
       </div>
 
@@ -91,8 +104,14 @@ export default function AskAfri3B() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && send()}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.nativeEvent.isComposing) {
+              e.preventDefault();
+              send();
+            }
+          }}
           placeholder="Ask something…"
+          aria-label="Message Afri3B"
           className="flex-1 rounded-md border border-line bg-bg px-3 py-2 text-sm lg:px-4 lg:py-2.5 lg:text-[0.95rem]"
         />
         {/* Honeypot */}
@@ -107,10 +126,11 @@ export default function AskAfri3B() {
         />
         <button
           onClick={send}
-          disabled={sending}
+          disabled={sending || !input.trim()}
+          type="button"
           className="rounded-md bg-gold px-4 py-2 text-sm font-semibold text-[#17140c] disabled:opacity-60"
         >
-          {sending ? "…" : "Send"}
+          {sending ? "Sending…" : "Send"}
         </button>
       </div>
     </div>

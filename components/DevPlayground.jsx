@@ -24,6 +24,15 @@ export default function DevPlayground() {
     const requestBody = {
       message: text,
       sessionId: sessionId.current,
+      history: messages.flatMap((item) => {
+        if (item.role === "request") {
+          return [{ role: "user", content: item.body.message }];
+        }
+        if (item.role === "response" && item.ok && typeof item.body.reply === "string") {
+          return [{ role: "assistant", content: item.body.reply }];
+        }
+        return [];
+      }).slice(-8),
       source: "developer-playground",
     };
 
@@ -62,7 +71,12 @@ export default function DevPlayground() {
       </div>
 
       <div className="mt-3 overflow-hidden rounded-md border border-line">
-        <div className="max-h-96 space-y-3 overflow-y-auto bg-bg p-4">
+        <div
+          className="max-h-96 space-y-3 overflow-y-auto bg-bg p-4"
+          role="log"
+          aria-label="Developer chat transcript"
+          aria-busy={sending}
+        >
           {messages.length === 0 && (
             <p className="text-sm italic text-ink-dim">Send a message below to see it flow through /api/chat.</p>
           )}
@@ -92,14 +106,21 @@ export default function DevPlayground() {
               </div>
             )
           )}
+          {sending && <p className="text-xs text-ink-dim" role="status">Afri3B is responding…</p>}
           <div ref={endRef} />
         </div>
         <div className="flex gap-2 border-t border-line bg-bg-raised p-3">
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && send()}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.nativeEvent.isComposing) {
+                e.preventDefault();
+                send();
+              }
+            }}
             placeholder="Try a query…"
+            aria-label="Message Afri3B developer playground"
             className="flex-1 rounded-md border border-line bg-bg px-3 py-2 text-sm"
           />
           <input
@@ -113,10 +134,11 @@ export default function DevPlayground() {
           />
           <button
             onClick={send}
-            disabled={sending}
+            disabled={sending || !input.trim()}
+            type="button"
             className="rounded-md bg-gold px-4 py-2 text-sm font-semibold text-[#17140c] disabled:opacity-60"
           >
-            {sending ? "…" : "Send"}
+            {sending ? "Sending…" : "Send"}
           </button>
         </div>
       </div>

@@ -96,9 +96,14 @@ export async function POST(request) {
     return new Response("OK", { status: 200 });
   }
 
+  const contributionRequest = parseContributionCommand(message.text);
   const marketingCommand = isAdmin(message.from) ? parseMarketingCommand(message.text) : null;
 
-  const reply = marketingCommand
+  const reply = contributionRequest === "help"
+    ? "To submit a contribution for human review, send: /contribute I AGREE <word, meaning, or example>. Only that message is shared; ordinary DMs are not submitted."
+    : contributionRequest
+    ? await submitWhatsAppContribution(contributionRequest, message.id)
+    : marketingCommand
     ? await getMarketingDraft(marketingCommand, message.from)
     : await getAfri3BReply(message.text, message.from);
 
@@ -131,6 +136,51 @@ function parseMarketingCommand(text) {
     return { platform: alias, brief: restWords.join(" ").trim() };
   }
   return { platform: "The Forge", brief: rest };
+}
+
+function parseContributionCommand(text) {
+  if (!/^\/contribute\b/i.test(text.trim())) return null;
+  const match = text.trim().match(/^\/contribute\s+I\s+AGREE\s+([\s\S]+)$/i);
+  if (!match || !match[1].trim()) return "help";
+  return match[1].trim().slice(0, 2000);
+}
+
+async function submitWhatsAppContribution(message, whatsappMessageId) {
+  const endpoint = process.env.AFRIFOUNDRY_TRAINING_API_URL;
+  const apiKey = process.env.AFRIFOUNDRY_TRAINING_API_KEY;
+  if (!endpoint || !apiKey) {
+    console.error("WhatsApp contribution relay is not configured.");
+    return "Contributions are not connected right now. Your message was not submitted.";
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12000);
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        message,
+        consent: true,
+        source: "whatsapp-contribution",
+        client_submission_id: `whatsapp:${whatsappMessageId}`,
+        submittedAt: new Date().toISOString(),
+      }),
+      signal: controller.signal,
+    });
+    if (!response.ok) {
+      console.error("WhatsApp contribution relay rejected submission:", response.status);
+      return "Your contribution could not be submitted. It has not been added to Afri3B.";
+    }
+    return "Thank you. This message was submitted for human review; it will not enter a dictionary or training data unless a reviewer approves it.";
+  } catch {
+    return "The contribution service could not be reached. Your message was not submitted.";
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 async function getMarketingDraft(command, from) {
@@ -173,7 +223,7 @@ function extractMessage(payload) {
     const value = payload.entry?.[0]?.changes?.[0]?.value;
     const msg = value?.messages?.[0];
     if (!msg || msg.type !== "text") return null;
-    return { from: msg.from, text: msg.text.body };
+    return { id: msg.id, from: msg.from, text: msg.text.body };
   } catch {
     return null;
   }

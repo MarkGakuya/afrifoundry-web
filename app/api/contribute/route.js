@@ -34,7 +34,7 @@ export async function POST(request) {
     return Response.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { message, consent, company } = body || {};
+  const { message, consent, company, submissionId } = body || {};
 
   // Silently "succeed" on honeypot hits so bots don't learn to adapt.
   if (company) {
@@ -55,6 +55,7 @@ export async function POST(request) {
     message: message.trim(),
     consent: true,
     source: "website-widget",
+    client_submission_id: typeof submissionId === "string" ? submissionId.slice(0, 200) : undefined,
     submittedAt: new Date().toISOString(),
   };
 
@@ -65,7 +66,7 @@ export async function POST(request) {
     // Backend isn't wired up yet. Fail honestly rather than pretending
     // the message went somewhere — logged so it's visible in Vercel's
     // function logs during setup.
-    console.error("AFRIFOUNDRY_TRAINING_API_URL is not set — message dropped:", payload);
+    console.error("AFRIFOUNDRY_TRAINING_API_URL is not set — contribution was not submitted.");
     return Response.json(
       { error: "Training pipeline isn't connected yet. Please try again later." },
       { status: 503 }

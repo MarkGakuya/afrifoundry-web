@@ -108,6 +108,7 @@ export default function MarketingStudio() {
           onChange={(e) => setBrief(e.target.value)}
           rows={3}
           placeholder="What's this post about? e.g. 'Announce the investor dashboard going live'"
+          aria-label="Marketing post brief"
           className="mt-4 w-full rounded-md border border-line bg-bg-raised px-3 py-2.5 text-sm"
         />
         <button

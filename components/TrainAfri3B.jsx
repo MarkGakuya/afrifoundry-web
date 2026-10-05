@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const WELCOME = {
   role: "afri3b",
-  text: "Teach me a word or phrase I'm still learning, correct something I got wrong, or just leave feedback. Every message here goes straight into the training pipeline, reviewed before it's used.",
+  text: "Teach me a word or phrase I'm still learning, correct something I got wrong, or leave feedback. Submissions are reviewed by a person before any dictionary entry is verified or used for training.",
 };
 
 export default function TrainAfri3B() {
@@ -15,6 +15,7 @@ export default function TrainAfri3B() {
   const [company, setCompany] = useState(""); // honeypot, invisible to real users
   const [sending, setSending] = useState(false);
   const endRef = useRef(null);
+  const submissionIds = useRef(new Map());
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -24,6 +25,14 @@ export default function TrainAfri3B() {
     const text = input.trim();
     if (!text || sending) return;
 
+    let submissionId = submissionIds.current.get(text);
+    if (!submissionId) {
+      submissionId = typeof crypto !== "undefined" && crypto.randomUUID
+        ? crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      submissionIds.current.set(text, submissionId);
+    }
+
     setMessages((m) => [...m, { role: "user", text }]);
     setInput("");
     setSending(true);
@@ -32,16 +41,16 @@ export default function TrainAfri3B() {
       const res = await fetch("/api/contribute", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, consent: consented, company }),
+        body: JSON.stringify({ message: text, consent: consented, company, submissionId }),
       });
       const data = await res.json();
 
       if (!res.ok) {
         setMessages((m) => [...m, { role: "system", text: data.error || "Couldn't send that — try again." }]);
-      } else if (data.reply) {
-        setMessages((m) => [...m, { role: "afri3b", text: data.reply }]);
       } else {
-        setMessages((m) => [...m, { role: "system", text: "Logged for review — thank you." }]);
+        submissionIds.current.delete(text);
+        if (data.reply) setMessages((m) => [...m, { role: "afri3b", text: data.reply }]);
+        else setMessages((m) => [...m, { role: "system", text: "Submitted for human review — thank you." }]);
       }
     } catch {
       setMessages((m) => [...m, { role: "system", text: "Couldn't reach the server — try again." }]);

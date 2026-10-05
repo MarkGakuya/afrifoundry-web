@@ -15,19 +15,29 @@ team application chat — one backend connection, four front doors.
 
 | Env var | Where it's set | What it is |
 |---|---|---|
-| `AFRIFOUNDRY_CHAT_API_URL` | Vercel | Your live chat endpoint, e.g. `https://api.afrifoundry.com/v1/chat` |
-| `AFRIFOUNDRY_CHAT_API_KEY` | Vercel | Bearer token, if your endpoint requires one |
+| `AFRIFOUNDRY_CHAT_API_URL` | Vercel and local server env | `https://api.afrifoundry.com/v1/public-chat` |
+| `AFRIFOUNDRY_CHAT_API_KEY` | Vercel and local server env | Server-only secret; must match `WEBSITE_CHAT_KEY` on the Afri3B API |
 
 **Your endpoint receives** (`POST`, from `app/api/chat/route.js`):
 ```json
 {
   "message": "string — what the person typed",
   "sessionId": "string or null — lets you thread a conversation if you support it",
-  "source": "website | whatsapp | developer-playground | team-application",
+   "history": [{ "role": "user | assistant", "content": "previous turn" }],
+   "source": "website | whatsapp | whatsapp-marketing | developer-playground | team-application | marketing-studio",
   "context": "string or null — e.g. 'Applicant conversation for the ML engineer role', present only on the team application chat",
   "submittedAt": "ISO 8601 timestamp"
 }
 ```
+`history` contains at most the latest eight successful turns. It is sent as
+separate user/assistant messages, not folded into the system prompt. The API
+key is required and is never exposed to browser code. Configure the same
+random secret as `WEBSITE_CHAT_KEY` on the Afri3B API and
+`AFRIFOUNDRY_CHAT_API_KEY` on the website server.
+
+Do not point this integration at `/v1/chat`: that route requires a signed-in
+Afri3B user JWT and returns a different response shape. The website relay is
+for anonymous website surfaces and must target `/v1/public-chat`.
 
 **Your endpoint must return:**
 ```json
